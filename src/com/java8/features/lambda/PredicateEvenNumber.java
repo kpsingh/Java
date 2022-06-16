@@ -1,24 +1,32 @@
 package com.java8.features.lambda;
-import java.util.*;
-import java.util.function.*;
+
+import java.util.function.Predicate;
+/*
+ * learning about predicate functional interface.
+ */
 
 public class PredicateEvenNumber {
-	
-	public static void main(String args[]) {
-		
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter a number : ");
-		int a = sc.nextInt();
-		
-		// Chek if number is even or not
-		
-		Predicate<Integer> p = (x) -> x % 2 == 0;
-		System.out.println(p.test(a));
-		
-		
-		
-		
-		
+
+	public static void main(String[] args) {
+
+		int n = 14;
+
+		String name = "Prasoon";
+
+		Predicate<Integer> p = i -> i % 2 == 0;
+
+		Predicate<String> p2 = s -> s.length() % 2 == 0;
+
+		if (p2.test(name) && p.test(n)) {
+			System.out.println("Name & Number both are EVEN length");
+		} else if (p2.test(name)) {
+			System.out.println("Name is even length");
+		} else if (p.test(n)) {
+			System.out.println("N is even length");
+		} else {
+			System.out.println("Name & Number both are ODD length");
+		}
+
 	}
 
 }

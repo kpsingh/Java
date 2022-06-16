@@ -1,4 +1,4 @@
-package com.kp.java8.functional;
+package com.java8.features.lambda;
 
 import java.util.Arrays;
 import java.util.HashMap;

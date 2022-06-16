@@ -1,4 +1,4 @@
-package com.java.practice.java.programing;
+package com.java.practice;
 
 public class PrintAllPermutation {
 
