@@ -5,7 +5,8 @@ https://docs.oracle.com/javase/tutorial/essential/concurrency/imstrat.html
 https://medium.com/javarevisited/confused-with-immutable-class-in-java-why-string-is-immutable-get-it-clear-7edbee856c9
 
 A Strategy for Defining Immutable Objects
-The following rules define a simple strategy for creating immutable objects. Not all classes documented as "immutable" follow
+The following rules define a simple strategy for creating immutable objects. Not all classes documented as "immutable" 
+follow
 these rules. This does not necessarily mean the creators of these classes were sloppy — they may have good reason for
 believing that instances of their classes never change after construction. However, such strategies require sophisticated
 analysis and are not for beginners.
@@ -16,14 +17,17 @@ analysis and are not for beginners.
     A more sophisticated approach is to make the constructor private and construct instances in factory methods.
 4. If the instance fields include references to mutable objects, don't allow those objects to be changed:
     a. Don't provide methods that modify the mutable objects.
-    b. Don't share references to the mutable objects. Never store references to external, mutable objects passed to the constructor;
-       if necessary, create copies, and store references to the copies. Similarly, create copies of your internal mutable objects
+    b. Don't share references to the mutable objects. Never store references to external, mutable objects passed to the 
+    constructor;
+       if necessary, create copies, and store references to the copies. Similarly, create copies of your internal mutable 
+       objects
 when necessary to avoid returning the originals in your methods.
  */
 
 
 public class MyImmutableDriver {
     public static void main(String[] args) {
+    	
         Student student = new Student(32, "Krishna");
 
         MyImmutable immutable = new MyImmutable(121,"CSE",student);
@@ -41,6 +45,7 @@ public class MyImmutableDriver {
 
 // This is immutable class.
 final class MyImmutable {
+	
     final private int id;
     final private String branch;
     final private Student desc;

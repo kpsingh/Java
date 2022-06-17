@@ -18,15 +18,15 @@ public class DeepShallowCopy {
         System.out.println(Arrays.toString(shallow));
         System.out.println(Arrays.toString(deep));
 
-        // If we change the initial arr[] then shallow will get effected but not the seep one
+        // If we change the initial arr[] then shallow will get effected but not the deep one
 
         arr[1] = 50;
         arr[2] = 100;
         System.out.println("******* After the modification **********");
 
-        System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(shallow));
-        System.out.println(Arrays.toString(deep));
+        System.out.println("Initial " + Arrays.toString(arr));
+        System.out.println("Shallow " + Arrays.toString(shallow));
+        System.out.println("Deep " + Arrays.toString(deep));
 
     }
 
