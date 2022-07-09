@@ -14,7 +14,7 @@ public class C extends B{
 
 	@Override
 	public void show5() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
