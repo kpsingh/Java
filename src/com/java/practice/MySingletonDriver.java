@@ -67,7 +67,7 @@ class MySingleton {
 
 	// Method 2 - Tread Safe but not efficient
 
-	public static synchronized MySingleton getInstance2() {
+	public static synchronized  MySingleton getInstance2() {
 
 		if (instanace == null) {
 			instanace = new MySingleton();

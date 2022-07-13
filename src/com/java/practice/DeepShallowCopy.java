@@ -31,11 +31,14 @@ public class DeepShallowCopy {
     }
 
     private static int[] getDeep(int[] arr) {
+    	
         int[] deep = new int[arr.length];
+        
         /*
         Here we are taking the value and creating the object, hence when arr[] get chnage it dones not have any impact
         in this object. Pass by value used here.
          */
+        
         for(int i = 0; i< arr.length; i++){
             deep[i] = arr[i];
         }
