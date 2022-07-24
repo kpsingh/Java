@@ -1,4 +1,4 @@
-package com.java.multithreading.adv;
+package com.java.multithreading;
 
 public class OddEvenByWaitNotify {
 
