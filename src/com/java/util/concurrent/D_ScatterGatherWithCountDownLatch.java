@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 
@@ -21,7 +22,7 @@ import java.util.concurrent.Future;
  * the job. Once all job get finished then we'll see the result of each job to
  * decide next step.
  * 
- * Ex: - Let say we want to check if customer is eligible for WalthAccount or
+ * Ex: - Let say we want to check if customer is eligible for Wealth Account or
  * not. We'll run all the eligibility check asynchronous and validate the result
  * of each check, is any check fails then we'll stop the journey and send the
  * user back the message which eligibility got failed.
@@ -55,8 +56,18 @@ public class D_ScatterGatherWithCountDownLatch {
 			futureList.add(future);
 		}
 
-		// main thread has to wait until the latch has counted down to zero == implied
-		// all job got completed
+		/**
+		 * main thread has to wait until the latch has counted down to zero == implied
+		 * jobs are completed
+		 * 
+		 * latch.await();
+		 * 
+		 * Also, if we wan to wait for a particular amount of time then we can use
+		 * 
+		 * latch.await(3, TimeUnit.SECONDS); - Example, wait for 3 seconds
+		 * 
+		 */
+
 		latch.await();
 
 		service.shutdown(); // best practice to use in try and finally. avoiding now for simplicity
@@ -119,7 +130,7 @@ class Eliginbilty_ResidencialAddress implements IEligibility {
 		boolean notEligible = true;
 
 		EligibilityResponse result = new EligibilityResponse(notEligible, 101 + "_You are not resident of UK");
-		latch.countDown();
+		latch.countDown(); // indicate task has done.
 		return result;
 
 	}
@@ -141,7 +152,7 @@ class Eliginbilty_CRSCountry implements IEligibility {
 		boolean notEligible = false;
 
 		EligibilityResponse result = new EligibilityResponse(notEligible, null);
-		latch.countDown();
+		latch.countDown(); // indicate task has done.
 		return result;
 
 	}
@@ -163,7 +174,7 @@ class Eliginbilty_CountryOfBirth implements IEligibility {
 		boolean notEligible = false;
 
 		EligibilityResponse result = new EligibilityResponse(notEligible, null);
-		latch.countDown();
+		latch.countDown(); // indicate task has done.
 		return result;
 
 	}
