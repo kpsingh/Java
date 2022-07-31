@@ -1,9 +1,9 @@
-package com.java.multithreading;
+package com.java.util.concurrent;
 
-public class OddEvenByWaitNotify {
+public class E1_OddEvenByWaitNotify {
 
 	public static void main(String[] args) {
-		Print p = new Print();
+		Print2 p = new Print2();
 
 		Thread even = new Thread(() -> p.printEven());
 
@@ -15,7 +15,7 @@ public class OddEvenByWaitNotify {
 
 }
 
-class Print {
+class Print2 {
 
 	public synchronized void printEven() {
 

@@ -1,49 +1,58 @@
-package com.java.multithreading;
+package com.java.util.concurrent;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PorducerConsumer {
+public class F_PorducerConsumer {
+
+	static int a = 1;
 
 	public static void main(String[] args) {
 
-		BlockingQueue<Integer> q = new ArrayBlockingQueue<>(1);
+		BlockingQueue<Integer> q = new ArrayBlockingQueue<>(5);
+		ExecutorService service = Executors.newFixedThreadPool(2);
 
 		Runnable producer = () -> {
-			int i = 1;
 			while (true) {
 				try {
-					System.out.println("Produced : " + i);
-					Thread.sleep(2000);
-					q.put(i++);
-					Thread.sleep(2000);
+
+					System.out.println("Produced : " + a);
+
+					q.put(a++);
+
+					Thread.sleep(1000);
+
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+
 			}
+
 		};
 
 		Runnable consumer = () -> {
 			while (true) {
 				try {
+
 					System.out.println("Consumed : " + q.take());
+
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+
 			}
+
 		};
 
 		Runnable[] jobs = { producer, consumer };
 
-		ExecutorService executor = Executors.newFixedThreadPool(2);
-
-		for (Runnable job : jobs) {
-			executor.submit(job);
+		for (Runnable r : jobs) {
+			service.execute(r);
 		}
 
-		executor.shutdown();
+		service.shutdown();
 
 	}
 

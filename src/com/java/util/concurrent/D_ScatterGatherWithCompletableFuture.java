@@ -18,11 +18,11 @@ public class D_ScatterGatherWithCompletableFuture {
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 
 		/**
-		 * Set to hold eligibility result. If set contains the any not eligible then we
+		 * HashSet to hold eligibility result. If set contains the any not eligible then we
 		 * can return.
 		 * 
 		 * For simplicity storing Boolean but in real time store actual
-		 * EligibilityResponse(s).
+		 * EligibilityResponse.
 		 * 
 		 */
 		HashSet<Boolean> eligibilityResult = new HashSet<>();
@@ -38,10 +38,10 @@ public class D_ScatterGatherWithCompletableFuture {
 
 		CompletableFuture<Void> allTask = CompletableFuture.allOf(task1, task2, task3);
 
-		// main thread will wait here until all the task not get completed.
+		// main thread will wait here until all the task get completed.
 		allTask.get();
 
-		// all task not get completed and we can check the result to decide further
+		// all tasks completed and we can check the result to decide further
 
 		if (eligibilityResult.contains(true)) {
 			System.out.println("Custoemr is not eligible for AccountOpening Journey !");
