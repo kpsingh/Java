@@ -22,11 +22,11 @@ public class G_MyBlockingQueue<E> {
 	Condition notEmpty;
 
 	public G_MyBlockingQueue(int size) {
-		queue = new LinkedList<>();
-		max = size;
-		lock = new ReentrantLock();
-		notEmpty = lock.newCondition();
-		notFull = lock.newCondition();
+		this.queue = new LinkedList<>();
+		this.max = size;
+		this.lock = new ReentrantLock();
+		this.notEmpty = lock.newCondition();
+		this.notFull = lock.newCondition();
 
 	}
 
