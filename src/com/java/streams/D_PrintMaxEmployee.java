@@ -29,16 +29,16 @@ public class D_PrintMaxEmployee {
 		// 2nd Way
 		System.out.println(empList.stream().map(e -> e.getSal()).min(Comparator.reverseOrder()).get());
 
-		// 3rd way
+		// 3rd way - IMP
 		System.out.println(empList.stream().map(e -> e.getSal()).max(Comparator.naturalOrder()).get());
 
 		// 4th Way
 		System.out.println(empList.stream().map(e -> e.getSal()).max((e1, e2) -> e1 - e2).get());
 
-		// 5th Ways
+		// 5th Ways - IMP
 		System.out.println(empList.stream().mapToInt(e -> e.getSal()).max().getAsInt());
 
-		// 6th Way
+		// 6th Way - IMP
 		System.out.println(empList.stream().mapToInt(Employee::getSal).max().getAsInt());
 
 	}
