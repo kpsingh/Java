@@ -12,6 +12,7 @@ public class F_PorducerConsumer {
 	public static void main(String[] args) {
 
 		BlockingQueue<Integer> q = new ArrayBlockingQueue<>(5);
+		
 		ExecutorService service = Executors.newFixedThreadPool(2);
 
 		Runnable producer = () -> {

@@ -10,6 +10,7 @@ public class G1_MyBlockingQueue_Demo {
 	public static void main(String[] args) {
 
 		G_MyBlockingQueue<Integer> queue = new G_MyBlockingQueue<>(5);
+		
 		ExecutorService service = Executors.newFixedThreadPool(2);
 
 		Runnable producer = () -> {
