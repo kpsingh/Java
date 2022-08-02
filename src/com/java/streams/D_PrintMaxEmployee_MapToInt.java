@@ -11,7 +11,7 @@ import java.util.List;
  * Max, Min etc type aggregate functions are the right options.
  */
 
-public class D_PrintMaxEmployee {
+public class D_PrintMaxEmployee_MapToInt {
 
 	public static void main(String[] args) {
 
@@ -23,22 +23,22 @@ public class D_PrintMaxEmployee {
 		empList.add(new Employee("Ronak", 56));
 		empList.add(new Employee("Walter", 45));
 
-		// 1st Way
+		// 1st Way - bad way
 		System.out.println(empList.stream().map(e -> e.getSal()).sorted(Comparator.reverseOrder()).findFirst().get());
 
 		// 2nd Way
 		System.out.println(empList.stream().map(e -> e.getSal()).min(Comparator.reverseOrder()).get());
 
-		// 3rd way - IMP
+		// 3rd way - IMP -
 		System.out.println(empList.stream().map(e -> e.getSal()).max(Comparator.naturalOrder()).get());
 
 		// 4th Way
 		System.out.println(empList.stream().map(e -> e.getSal()).max((e1, e2) -> e1 - e2).get());
 
-		// 5th Ways - IMP
+		// 5th Ways - IMP - Best Way
 		System.out.println(empList.stream().mapToInt(e -> e.getSal()).max().getAsInt());
 
-		// 6th Way - IMP
+		// 6th Way - IMP - Best Way
 		System.out.println(empList.stream().mapToInt(Employee::getSal).max().getAsInt());
 
 	}
