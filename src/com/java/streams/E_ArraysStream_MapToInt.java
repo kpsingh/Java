@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 public class E_ArraysStream_MapToInt {
+
 	public static void main(String[] args) {
 
 		String str = "25 100 5 75";
@@ -56,7 +56,7 @@ public class E_ArraysStream_MapToInt {
 		 * Stream.of() = Returns a sequential ordered stream whose elements are the
 		 * specified values.
 		 * 
-		 * internally it calls Arrays.stream(values);
+		 * Internally it calls Arrays.stream(values);
 		 */
 
 		Stream.of(str.split(" ")).mapToInt(Integer::parseInt).forEach(System.out::println);

@@ -1,8 +1,11 @@
 package com.java.streams;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * 
@@ -40,6 +43,23 @@ public class D_PrintMaxEmployee_MapToInt {
 
 		// 6th Way - IMP - Best Way
 		System.out.println(empList.stream().mapToInt(Employee::getSal).max().getAsInt());
+
+		/**
+		 * let suppose we had array instead of (list, set, map) of those object then how
+		 * would you have done it ? array can be either primitive or custom array
+		 */
+
+		Employee[] arr = { new Employee("Rohit", 45), new Employee("Krishna", 56), new Employee("Prakhar", 70),
+				new Employee("Ronak", 86), new Employee("Walter", 45) };
+
+		// 1st way
+		System.out.println(Arrays.stream(arr).mapToInt(e -> e.getSal()).max().getAsInt());
+
+		// 2nd way : Internally Stream.of calls Arrays.stream();
+		System.out.println(Stream.of(arr).mapToInt(Employee::getSal).max().getAsInt());
+
+		// 3trd way - not good way... lot of extra work get done
+		System.out.println(Arrays.asList(arr).stream().mapToInt(Employee::getSal).max().getAsInt());
 
 	}
 
