@@ -1,4 +1,4 @@
-package com.java.practice.knapsack;
+package com.java.practice.string.knapsack;
 
 public class ZeroOneKnapSackRecursive {
 

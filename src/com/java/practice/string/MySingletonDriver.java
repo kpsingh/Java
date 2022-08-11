@@ -1,4 +1,4 @@
-package com.java.practice;
+package com.java.practice.string;
 
 /*
 https://www.baeldung.com/java-singleton

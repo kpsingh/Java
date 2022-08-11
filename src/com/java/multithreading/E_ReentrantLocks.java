@@ -15,6 +15,7 @@ public class E_ReentrantLocks {
 
 		t1.start();
 		t2.start();
+		
 
 	}
 
@@ -22,17 +23,10 @@ public class E_ReentrantLocks {
 
 class Print {
 
-	private volatile int number;
-	ReentrantLock lock;
-	Condition even;
-	Condition odd;
-
-	public Print() {
-		this.number = 1;
-		lock = new ReentrantLock();
-		even = lock.newCondition();
-		odd = lock.newCondition();
-	}
+	private volatile int number = 1;
+	ReentrantLock lock = new ReentrantLock();
+	Condition even = lock.newCondition();
+	Condition odd = lock.newCondition();
 
 	public void even() {
 

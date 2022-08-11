@@ -1,4 +1,4 @@
-package com.java.practice.map;
+package com.java.practice.string.map;
 
 import java.util.ArrayList;
 import java.util.Collections;

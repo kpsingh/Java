@@ -1,4 +1,4 @@
-package com.java.practice;
+package com.java.practice.string;
 /*
 https://docs.oracle.com/javase/tutorial/essential/concurrency/imstrat.html
 
