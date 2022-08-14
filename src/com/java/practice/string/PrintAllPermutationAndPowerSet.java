@@ -14,10 +14,10 @@ public class PrintAllPermutationAndPowerSet {
 
 	public static void main(String[] args) {
 
-		String s = "abcba";
+		String s = "abc";
 		String ans = "";
 
-		printPermutataion_V1(s, ans);
+		printPermutation_V1(s, ans);
 
 		System.out.println(superSet);
 
@@ -30,7 +30,8 @@ public class PrintAllPermutationAndPowerSet {
 		System.out.println(superSet);
 
 		/*
-		 * Print in sorted manner
+		 * Print in sorted manner......
+		 * 
 		 */
 
 		// Natural String sorting
@@ -43,12 +44,12 @@ public class PrintAllPermutationAndPowerSet {
 
 	}
 
-	private static void printPermutataion_V1(String s, String ans) {
+	private static void printPermutation_V1(String s, String ans) {
 
-		superSet.add(s);
+		superSet.add(s); // this collect all super/power set produced by given string
 
 		if (s.isBlank()) {
-			System.out.println(ans);
+			System.out.println(ans); // this print all permutation of string
 			return;
 		}
 
@@ -58,7 +59,7 @@ public class PrintAllPermutationAndPowerSet {
 			String rightString = s.substring(i + 1);
 			String newString = leftString + rightString;
 
-			printPermutataion_V1(newString, ans + c);
+			printPermutation_V1(newString, ans + c);
 
 		}
 

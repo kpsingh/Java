@@ -50,7 +50,8 @@ public class E_ArraysStream_MapToInt {
 
 		Arrays.stream(str1.split(" ")).map(String::new).forEach(s -> System.out.println(s + " : " + s.length()));
 
-		Arrays.stream(str.split(" ")).map(String::new).forEach(s -> System.out.println(s + " : " + s.length()));
+		System.out.println("After the change");
+		Arrays.stream(str1.split(" ")).map(s -> s).forEach(s -> System.out.print(s + " : " + s.length() + " ; "));
 
 		/**
 		 * Stream.of() = Returns a sequential ordered stream whose elements are the
@@ -58,7 +59,7 @@ public class E_ArraysStream_MapToInt {
 		 * 
 		 * Internally it calls Arrays.stream(values);
 		 */
-
+		System.out.println();
 		Stream.of(str.split(" ")).mapToInt(Integer::parseInt).forEach(System.out::println);
 
 	}

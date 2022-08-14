@@ -45,9 +45,6 @@ public class F_FlatMap {
 				.collect(Collectors.toList());
 
 		System.out.println(flatPhone);
-		
-		
-		
 
 	}
 
@@ -57,6 +54,8 @@ class Person {
 
 	private int id;
 	private String email;
+
+	// one user can have many phone number
 	private List<Integer> phone;
 
 	public Person(int id, String email, List<Integer> phone) {

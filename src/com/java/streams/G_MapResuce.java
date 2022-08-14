@@ -17,6 +17,9 @@ public class G_MapResuce {
 		sum = list.stream().reduce(0, (a, b) -> a + b);
 		System.out.println(sum);
 
+		sum = list.stream().reduce((a, b) -> a + b).get();
+		System.out.println(sum);
+
 		// Sum of all even number in the list
 		sum = list.stream().filter(x -> x % 2 == 0).reduce(Integer::sum).get();
 		System.out.println(sum);

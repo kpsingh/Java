@@ -12,7 +12,7 @@ public class A_FindMinimum {
 
 	public static void main(String[] args) {
 
-		int[] arr = { 4, 7, 13, 90, 16, 2, 10 };
+		int[] arr = { -4, 7, 13, 90, 16, 2, 10 };
 
 		/*
 		 * finding the minimum in old ways
@@ -43,6 +43,7 @@ public class A_FindMinimum {
 		System.out.println(summaryStatistics.getAverage());
 		System.out.println(summaryStatistics.getSum());
 		System.out.println(summaryStatistics.getCount());
+		System.out.println(summaryStatistics.getMin());
 
 	}
 
