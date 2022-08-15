@@ -2,6 +2,7 @@ package com.java.streams;
 
 import java.util.Arrays;
 import java.util.Comparator;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -10,7 +11,13 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-public class GroupingBy {
+/**
+ * https://stackoverflow.com/questions/45231351/differences-between-collectors-tomap-and-collectors-groupingby-to-collect-in
+ * 
+ * https://stackoverflow.com/questions/21697349/using-streams-to-collect-into-treeset-with-custom-comparator
+ */
+
+public class G_CollectorsGroupingBy {
 
 	public static void main(String[] args) {
 
@@ -35,6 +42,8 @@ public class GroupingBy {
 		 * department id
 		 */
 		System.out.println("\n****** Print the LIST of Emp based on department ID ****** \n");
+
+		// default :- groupingBy(key, HashMap::new, toList());
 
 		Map<String, List<Emp>> empByDepartList = empList.stream().collect(Collectors.groupingBy(emp -> emp.getDepID()));
 
@@ -69,6 +78,8 @@ public class GroupingBy {
 
 		System.out.println("\n****** Print the SET of Emp based on department ID - Sorted (used TreeMap)  ****** \n");
 
+		// default :- groupingBy(key, HashMap::new, toList());
+
 		TreeMap<String, Set<Emp>> empByDepartsetTreemap = empList.stream()
 				.collect(Collectors.groupingBy(e -> e.getDepID(), TreeMap::new, Collectors.toSet()));
 
@@ -85,17 +96,17 @@ public class GroupingBy {
 		System.out.println(
 				"\n****** Print the SET of Emp based on department ID - Sorted (used TreeMap) and Value sortef too (used TreeSet) ****** \n");
 
-		// this is not working as expected need to check.
-		TreeMap<String, TreeSet<Emp>> byDeptOrderKeyValue = empList.stream()
-				.collect(Collectors.groupingBy(e -> e.getDepID(), TreeMap::new, Collectors.toCollection(TreeSet::new)));
+		TreeMap<String, TreeSet<Emp>> depOrderkeyValues = empList.stream()
+				.collect(Collectors.groupingBy(e -> e.getDepID(), TreeMap::new,
+						Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Emp::getName)))));
 
-		byDeptOrderKeyValue.entrySet().stream().forEach(System.out::println);
+		depOrderkeyValues.entrySet().stream().forEach(System.out::println);
 
 	}
 
 }
 
-class Emp implements Comparable<Emp> {
+class Emp {
 
 	int empID;
 	String name;
@@ -115,10 +126,9 @@ class Emp implements Comparable<Emp> {
 
 	public static List<Emp> getEmps() {
 
-		return Arrays.asList(new Emp(101, "Krishna", "CSE"), new Emp(102, "Sandhya", "CSE"),
-				new Emp(103, "Ishika", "EC"), new Emp(104, "Rohit", "CE"), new Emp(105, "Vikash", "ME"),
-				new Emp(106, "Rohit", "CSE"), new Emp(107, "Vikash", "EC"), new Emp(108, "Ankit", "AI"),
-				new Emp(109, "Ankit", "AI"));
+		return Arrays.asList(new Emp(101, "Aman", "CSE"), new Emp(102, "Gandhi", "CSE"), new Emp(103, "Ishika", "EC"),
+				new Emp(104, "Rohit", "CE"), new Emp(105, "Vikash", "ME"), new Emp(106, "Rohit", "CSE"),
+				new Emp(107, "Vikash", "EC"), new Emp(108, "Ankit", "AI"), new Emp(109, "Ankit", "AI"));
 
 	}
 
@@ -168,12 +178,6 @@ class Emp implements Comparable<Emp> {
 
 	public void setDepID(String depID) {
 		this.depID = depID;
-	}
-
-	@Override
-	public int compareTo(Emp o) {
-		// TODO Auto-generated method stub
-		return o.name.compareTo(this.name);
 	}
 
 }

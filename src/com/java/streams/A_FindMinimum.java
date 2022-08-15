@@ -36,7 +36,7 @@ public class A_FindMinimum {
 
 		System.out.println(IntStream.of(arr).min().getAsInt());
 
-		IntStream.of(arr).min().ifPresent(x -> System.out.println(x));
+		IntStream.of(arr).min().ifPresent(System.out::println);
 
 		IntSummaryStatistics summaryStatistics = IntStream.of(arr).summaryStatistics();
 		System.out.println(summaryStatistics.getMax());
