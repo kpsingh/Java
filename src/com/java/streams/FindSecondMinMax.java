@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.sound.midi.Soundbank;
-
 /**
  * 
  * This class will have the example of finding the second, third.... min / max.
