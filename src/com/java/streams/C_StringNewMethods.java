@@ -45,7 +45,6 @@ public class C_StringNewMethods {
 		collectMap.entrySet().stream().forEach(System.out::println);
 
 		
-		
 		System.out.println("Keys are not sorted... print them in sorted order");
 
 	//	Stream.of(str.split(" ")).collect(Collectors.toMap(e -> e, e -> e.length())).entrySet().forEach(System.out::println);

@@ -25,23 +25,33 @@ public class D_PrintMaxEmployee_MapToInt {
 		empList.add(new Employee("Ronak", 56));
 		empList.add(new Employee("Walter", 45));
 
-		// 1st Way - bad way
-		System.out.println(empList.stream().map(e -> e.getSal()).sorted(Comparator.reverseOrder()).findFirst().get());
-
-		// 2nd Way
-		System.out.println(empList.stream().map(e -> e.getSal()).min(Comparator.reverseOrder()).get());
-
-		// 3rd way - IMP -
-		System.out.println(empList.stream().map(e -> e.getSal()).max(Comparator.naturalOrder()).get());
-
-		// 4th Way
-		System.out.println(empList.stream().map(e -> e.getSal()).max((e1, e2) -> e1 - e2).get());
-
 		// 5th Ways - IMP - Best Way
 		System.out.println(empList.stream().mapToInt(e -> e.getSal()).max().getAsInt());
 
 		// 6th Way - IMP - Best Way
 		System.out.println(empList.stream().mapToInt(Employee::getSal).max().getAsInt());
+
+		/**
+		 * Print the employee based on highest salary to lowest salary
+		 */
+
+		System.out.println("\nPrint the employee based on highest salary to lowest salary\n");
+		empList.stream().sorted((e1, e2) -> e2.getSal() - e1.getSal()).forEach(System.out::println);
+
+		/**
+		 * Print the employee details with third highest salary
+		 */
+
+		System.out.println("\nPrint the employee details with third highest salary");
+		empList.stream().sorted((e1, e2) -> e2.getSal() - e1.getSal()).skip(2).limit(1).forEach(System.out::println);
+		System.out.println("\n");
+
+		/**
+		 * Print the employee based on salary natural order
+		 */
+
+		System.out.println("\nPrint the employee based salary to lowest salary natural order");
+		empList.stream().sorted((e1, e2) -> e1.getSal() - e2.getSal()).forEach(System.out::println);
 
 		/**
 		 * let suppose we had array instead of (list, set, map) of those object then how
@@ -59,6 +69,21 @@ public class D_PrintMaxEmployee_MapToInt {
 
 		// 3trd way - not good way... lot of extra work get done
 		System.out.println(Arrays.asList(arr).stream().mapToInt(Employee::getSal).max().getAsInt());
+
+		
+		/*
+		 * // 1st Way - bad way System.out.println(empList.stream().map(e ->
+		 * e.getSal()).sorted(Comparator.reverseOrder()).findFirst().get());
+		 * 
+		 * // 2nd Way System.out.println(empList.stream().map(e ->
+		 * e.getSal()).min(Comparator.reverseOrder()).get());
+		 * 
+		 * // 3rd way - IMP - System.out.println(empList.stream().map(e ->
+		 * e.getSal()).max(Comparator.naturalOrder()).get());
+		 * 
+		 * // 4th Way System.out.println(empList.stream().map(e -> e.getSal()).max((e1,
+		 * e2) -> e1 - e2).get());
+		 */
 
 	}
 
@@ -88,6 +113,11 @@ class Employee {
 
 	public void setSal(int sal) {
 		this.sal = sal;
+	}
+
+	@Override
+	public String toString() {
+		return "[name=" + name + ", sal=" + sal + "]";
 	}
 
 }
