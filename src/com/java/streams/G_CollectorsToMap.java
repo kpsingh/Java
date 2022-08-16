@@ -92,7 +92,12 @@ public class G_CollectorsToMap {
 				.collect(Collectors.toMap(Book::getIsbn, Book::getName, (o1, o2) -> o2, TreeMap::new));
 
 		byISBNOrderByName.entrySet().stream().forEach(System.out::println);
-
+		
+		
+		System.out.println("\n*** Alternate Way for Above : Test Output ****\n");
+		TreeMap<String, String> test = books.stream()
+				.collect(Collectors.toMap(Book::getIsbn, Book::getName, (o1, o2) -> o2, () -> new TreeMap<>()));
+		test.entrySet().stream().forEach(System.out::println);
 	}
 
 }
