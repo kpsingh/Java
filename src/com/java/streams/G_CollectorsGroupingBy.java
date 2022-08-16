@@ -15,6 +15,15 @@ import java.util.stream.Collectors;
  * https://stackoverflow.com/questions/45231351/differences-between-collectors-tomap-and-collectors-groupingby-to-collect-in
  * 
  * https://stackoverflow.com/questions/21697349/using-streams-to-collect-into-treeset-with-custom-comparator
+ * 
+ * 
+ * To collect into a Map that contains a single value by key
+ * (Map<MyKey,MyObject>), use Collectors.toMap().
+ * 
+ * To collect into a Map that contains multiple values by key
+ * (Map<MyKey,List<MyObject>>), use Collectors.groupingBy().
+ * 
+ * 
  */
 
 public class G_CollectorsGroupingBy {
@@ -101,6 +110,16 @@ public class G_CollectorsGroupingBy {
 						Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Emp::getName)))));
 
 		depOrderkeyValues.entrySet().stream().forEach(System.out::println);
+		
+		
+		System.out.println("\n****** Alternate Way 1 ******");
+		
+		
+		TreeMap<String, TreeSet<Emp>> test = empList.stream()
+				.collect(Collectors.groupingBy(e -> e.getDepID(), TreeMap::new,
+						Collectors.toCollection(() -> new TreeSet<>((e1, e2) -> e1.getName().compareTo(e2.getName())))));
+		
+		test.entrySet().stream().forEach(System.out::println);
 
 	}
 

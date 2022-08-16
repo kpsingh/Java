@@ -25,6 +25,11 @@ import java.util.stream.Collectors;
  * https://stackoverflow.com/questions/21697349/using-streams-to-collect-into-treeset-with-custom-comparator
  * 
  * 
+ * To collect into a Map that contains a single value by key
+ * (Map<MyKey,MyObject>), use Collectors.toMap().
+ * 
+ * To collect into a Map that contains multiple values by key
+ * (Map<MyKey,List<MyObject>>), use Collectors.groupingBy().
  * 
  */
 

@@ -45,18 +45,16 @@ public class FindTheDuplicateNumbers {
 		System.out.println("WAY 2 ->" + duplicate);
 
 		/**
-		 * Way 3 - by Collectos.grouping
+		 * Way 3 - by Collectors.groupingBy
 		 * 
 		 * This will return a map with element as key and its count as its value. If
 		 * count > 1 that mean duplicate element.
 		 * 
 		 */
 
-		Map<Integer, Long> dupMap = list.stream()
-				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		Map<Integer, Long> dupMap = list.stream().collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
-		dupMap.entrySet().stream().filter(e -> e.getValue() > 1)
-				.forEach(e -> System.out.println(e.getKey() + " : " + e.getValue()));
+		dupMap.entrySet().stream().filter(e -> e.getValue() > 1).forEach(System.out::println);
 
 	}
 }

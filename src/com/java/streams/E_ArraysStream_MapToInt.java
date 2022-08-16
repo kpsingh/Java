@@ -2,6 +2,7 @@ package com.java.streams;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -9,9 +10,9 @@ public class E_ArraysStream_MapToInt {
 
 	public static void main(String[] args) {
 
-		String str = "25 100 5 75";
+		String intstr = "25 100 5 75";
 
-		String str1 = "Hello man how are you";
+		String str = "Hello man how are you";
 
 		/**
 		 * 
@@ -32,26 +33,9 @@ public class E_ArraysStream_MapToInt {
 		 * source.
 		 */
 
-		Arrays.stream(str.split(" ")).mapToInt(Integer::parseInt).toArray();
+		int[] array = Arrays.stream(intstr.split(" ")).mapToInt(Integer::parseInt).toArray(); // OR
 
-		Arrays.stream(str.split(" ")).mapToInt(s -> Integer.parseInt(s)).toArray();
-
-		/**
-		 * In a single line create map with string and its length
-		 */
-
-		Map<String, Integer> collect = Arrays.stream(str1.split(" ")).map(String::new)
-				.collect(Collectors.toMap(e -> e, e -> e.length()));
-
-		/**
-		 * In a single line print its string and length
-		 *
-		 */
-
-		Arrays.stream(str1.split(" ")).map(String::new).forEach(s -> System.out.println(s + " : " + s.length()));
-
-		System.out.println("After the change");
-		Arrays.stream(str1.split(" ")).map(s -> s).forEach(s -> System.out.print(s + " : " + s.length() + " ; "));
+		Arrays.stream(intstr.split(" ")).mapToInt(s -> Integer.parseInt(s)).forEach(System.out::println);
 
 		/**
 		 * Stream.of() = Returns a sequential ordered stream whose elements are the
@@ -60,7 +44,7 @@ public class E_ArraysStream_MapToInt {
 		 * Internally it calls Arrays.stream(values);
 		 */
 		System.out.println();
-		Stream.of(str.split(" ")).mapToInt(Integer::parseInt).forEach(System.out::println);
+		Stream.of(intstr.split(" ")).mapToInt(Integer::parseInt).forEach(System.out::println);
 
 	}
 

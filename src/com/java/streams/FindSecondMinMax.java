@@ -31,10 +31,8 @@ public class FindSecondMinMax {
 
 		// Get the min, second min, 3rd min ... etc
 
-		Integer firstMin = list.stream().distinct().sorted().findFirst().get(); // get the top min
-		List<Integer> minLists = list.stream().distinct().skip(1).limit(2).collect(Collectors.toList());
+		List<Integer> minLists = list.stream().distinct().sorted().skip(1).limit(2).collect(Collectors.toList());
 
-		System.out.println(firstMin);
 		System.out.println("Second and Third min " + minLists);
 
 		// Get the max, second max, 3rd max...etc
@@ -42,7 +40,7 @@ public class FindSecondMinMax {
 		List<Integer> maxLists = list.stream().distinct().sorted(Collections.reverseOrder()).skip(1).limit(3)
 				.collect(Collectors.toList()); // get the top 3 excluding 1st max
 
-		System.out.println(maxLists);
+		System.out.println("Maxes are : " + maxLists);
 
 	}
 
