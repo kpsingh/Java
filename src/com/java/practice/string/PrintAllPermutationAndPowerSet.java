@@ -42,6 +42,9 @@ public class PrintAllPermutationAndPowerSet {
 		superSet.stream().sorted().sorted((a, b) -> a.length() < b.length() ? -1 : (a.length() > b.length() ? 1 : 0))
 				.forEach(System.out::println);
 
+		System.out.println("******* Alternate Way for above ***********");
+		superSet.stream().sorted().sorted((a, b) -> a.length() - b.length()).forEach(System.out::println);
+		
 	}
 
 	private static void printPermutation_V1(String s, String ans) {

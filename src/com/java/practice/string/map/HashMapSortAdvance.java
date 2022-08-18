@@ -31,11 +31,9 @@ public class HashMapSortAdvance {
 		 * sorted(Map.Entry.comparingByKey()) & sorted(Map.Entry.comparingByValue())
 		 */
 
-
 		System.out.println("******* Sort by Value  ************");
 
-		map.entrySet().stream().sorted(Map.Entry.comparingByValue())
-				.forEach(e -> System.out.println(e.getKey() + " : " + e.getValue()));
+		map.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(System.out::println);
 
 		System.out.println("Sort by Value Desc...");
 

@@ -72,8 +72,11 @@ public class D_ScatterGatherWithCountDownLatch {
 
 		service.shutdown(); // best practice to use in try and finally. avoiding now for simplicity
 
-		// At this point : now all the task has been completed hence see the eligibility
-		// result and if fails then return the journey
+		/*
+		 * At this point : now all the task has been completed hence see the eligibility
+		 * result and if fails then stop the journey and return the flow with
+		 * notEligible code and message.
+		 */
 
 		for (Future<EligibilityResponse> f : futureList) {
 

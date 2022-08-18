@@ -18,8 +18,7 @@ public class A_ExecutorServiceWithRunnable {
 
 		ExecutorService service = Executors.newFixedThreadPool(10);
 
-		// Submit the task/job to the thread pool to execute it. Let say I have 100 Jobs
-		// to run
+		// Submit the task/job to the thread pool to execute it. Let say I have 100 Jobs to run
 
 		for (int i = 0; i < 100; i++) {
 			service.execute(new Task(count++)); // Either we can use execute or submit method for Runnable type

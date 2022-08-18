@@ -1,9 +1,5 @@
 package com.java.practice.string;
 
-import java.util.Iterator;
-
-import org.w3c.dom.ls.LSOutput;
-
 public class PalindromString {
 
 	public static void main(String[] args) {
