@@ -54,7 +54,7 @@ public class G_CollectorsGroupingBy {
 
 		// default :- groupingBy(key, HashMap::new, toList());
 
-		Map<String, List<Emp>> empByDepartList = empList.stream().collect(Collectors.groupingBy(emp -> emp.getDepID()));
+		Map<String, List<Emp>> empByDepartList = empList.stream().collect(Collectors.groupingBy(emp -> emp.getDepID(),Collectors.toList()));
 
 		empByDepartList.entrySet().stream().forEach(System.out::println);
 
