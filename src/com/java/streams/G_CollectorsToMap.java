@@ -1,12 +1,9 @@
 package com.java.streams;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -36,22 +33,17 @@ import java.util.stream.Collectors;
 public class G_CollectorsToMap {
 	public static void main(String[] args) {
 
-		List<Book> books = new ArrayList<>();
-		books.add(new Book("If Trugth be told", 2010, "123"));
-		books.add(new Book("The Fellowship of the Ring", 1954, "101"));
-		books.add(new Book("The Two Towers", 1954, "026"));
-		books.add(new Book("The Return of the King", 1955, "001"));
-		books.add(new Book("Alchemist", 1995, "125"));
-
+		List<Employee> employees = getEmployeeList();
 		/**
-		 * Store the book by its ISBN number...
+		 * get the State and name of person
 		 * 
-		 * Key - isbn , value - book name
+		 * 
 		 */
 
-		books.stream().collect(Collectors.toMap(b -> b.getIsbn(), b -> b.getName())); // OR
+		employees.stream().collect(Collectors.toMap(e -> e.getState(), e -> e.getSalary())); // OR
 
-		books.stream().collect(Collectors.toMap(Book::getIsbn, Book::getName)).entrySet().forEach(System.out::println);
+		employees.stream().collect(Collectors.toMap(Employee::getState, Employee::getName)).entrySet()
+				.forEach(System.out::println);
 
 		/*
 		 * Problem with this is if two keys are duplicate then it throw the issue. If we
@@ -66,11 +58,13 @@ public class G_CollectorsToMap {
 		 * (oldValye, newValye) -> newValye ; that is if the same key came again replace
 		 * its value by new key
 		 */
+		
+		
 
 		System.out.println();
 
-		Map<Integer, String> bookMapByYear = books.stream()
-				.collect(Collectors.toMap(Book::getReleaseYear, Book::getName, (e1, e2) -> e2));
+		Map<String, Integer> bookMapByYear = employees.stream()
+				.collect(Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2));
 
 		bookMapByYear.entrySet().stream().forEach(System.out::println);
 
@@ -88,60 +82,29 @@ public class G_CollectorsToMap {
 
 		System.out.println("\nOrder by Key (ISBN)\n");
 
-		TreeMap<String, String> byISBNOrderByName = books.stream()
-				.collect(Collectors.toMap(Book::getIsbn, Book::getName, (o1, o2) -> o2, TreeMap::new));
+		Map<String, Integer> byISBNOrderByName = employees.stream()
+				.collect(Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2, TreeMap::new));
 
 		byISBNOrderByName.entrySet().stream().forEach(System.out::println);
-		
-		
+
 		System.out.println("\n*** Alternate Way for Above : Test Output ****\n");
-		TreeMap<String, String> test = books.stream()
-				.collect(Collectors.toMap(Book::getIsbn, Book::getName, (o1, o2) -> o2, () -> new TreeMap<>()));
+		TreeMap<String, Integer> test = employees.stream().collect(
+				Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2, () -> new TreeMap<>()));
 		test.entrySet().stream().forEach(System.out::println);
 	}
 
-}
+	public static List<Employee> getEmployeeList() {
 
-class Book {
-
-	private String name;
-	private int releaseYear;
-	private String isbn;
-
-	public Book(String name, int releaseYear, String isbn) {
-		super();
-		this.name = name;
-		this.releaseYear = releaseYear;
-		this.isbn = isbn;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getReleaseYear() {
-		return releaseYear;
-	}
-
-	public void setReleaseYear(int releaseYear) {
-		this.releaseYear = releaseYear;
-	}
-
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	@Override
-	public String toString() {
-		return "Book [name=" + name + ", releaseYear=" + releaseYear + ", isbn=" + isbn + "]";
+		return Arrays.asList(new Employee("Sumit", 25, 26000, "Pune", "Maharashtra"),
+				new Employee("Mohan", 20, 23000, "Bhopal", "Madhya Pradesh"),
+				new Employee("Naina", 26, 25000, "Delhi", "Delhi"),
+				new Employee("Sachin", 35, 28000, "Kolkata", "West Bengal"),
+				new Employee("Rahul", 45, 33300, "Bangalore", "Karnatka"),
+				new Employee("Saurav", 60, 45000, "Kochhi", "Kerala"),
+				new Employee("Nidhi", 48, 38000, "Pathankot", "Himachal Pradesh"),
+				new Employee("Pooja", 29, 88000, "Lucknow", "Uttar Pradesh"),
+				new Employee("Saurav", 60, 50, "Kochhi", "Gujrat"));
 	}
 
 }
+
