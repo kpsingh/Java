@@ -82,7 +82,7 @@ public class G_CollectorsToMap {
 
 		System.out.println("\nOrder by Key (ISBN)\n");
 
-		Map<String, Integer> byISBNOrderByName = employees.stream()
+		TreeMap<String, Integer> byISBNOrderByName = employees.stream()
 				.collect(Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2, TreeMap::new));
 
 		byISBNOrderByName.entrySet().stream().forEach(System.out::println);

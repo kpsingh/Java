@@ -54,7 +54,7 @@ public class G_CollectorsGroupingBy {
 
 		// default :- groupingBy(key, HashMap::new, toList());
 
-		Map<String, List<Emp>> empByDepartList = empList.stream().collect(Collectors.groupingBy(emp -> emp.getDepID(),Collectors.toList()));
+		Map<String, List<Emp>> empByDepartList = empList.stream().collect(Collectors.groupingBy(Emp::getDepID,Collectors.toList()));
 
 		empByDepartList.entrySet().stream().forEach(System.out::println);
 
@@ -106,7 +106,7 @@ public class G_CollectorsGroupingBy {
 				"\n****** Print the SET of Emp based on department ID - Sorted (used TreeMap) and Value sortef too (used TreeSet) ****** \n");
 
 		TreeMap<String, TreeSet<Emp>> depOrderkeyValues = empList.stream()
-				.collect(Collectors.groupingBy(e -> e.getDepID(), TreeMap::new,
+				.collect(Collectors.groupingBy(Emp::getDepID, TreeMap::new,
 						Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Emp::getName)))));
 
 		depOrderkeyValues.entrySet().stream().forEach(System.out::println);

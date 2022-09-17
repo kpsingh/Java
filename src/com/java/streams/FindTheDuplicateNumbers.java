@@ -54,7 +54,7 @@ public class FindTheDuplicateNumbers {
 
 		Map<Integer, Long> dupMap = list.stream().collect(Collectors.groupingBy(i -> i, Collectors.counting()));
 
-		dupMap.entrySet().stream().filter(e -> e.getValue() > 1).forEach(System.out::println);
+		dupMap.entrySet().stream().filter(e -> e.getValue() > 1).map(e -> e.getKey()).forEach(System.out::println);
 
 	}
 }
