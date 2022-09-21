@@ -1,6 +1,5 @@
 package com.java.streams;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -33,7 +32,7 @@ import java.util.stream.Collectors;
 public class G_CollectorsToMap {
 	public static void main(String[] args) {
 
-		List<Employee> employees = getEmployeeList();
+		List<Employee> employees = EmpUtils.getEmployeeList();
 		/**
 		 * get the State and name of person
 		 * 
@@ -58,8 +57,6 @@ public class G_CollectorsToMap {
 		 * (oldValye, newValye) -> newValye ; that is if the same key came again replace
 		 * its value by new key
 		 */
-		
-		
 
 		System.out.println();
 
@@ -93,18 +90,4 @@ public class G_CollectorsToMap {
 		test.entrySet().stream().forEach(System.out::println);
 	}
 
-	public static List<Employee> getEmployeeList() {
-
-		return Arrays.asList(new Employee("Sumit", 25, 26000, "Pune", "Maharashtra"),
-				new Employee("Mohan", 20, 23000, "Bhopal", "Madhya Pradesh"),
-				new Employee("Naina", 26, 25000, "Delhi", "Delhi"),
-				new Employee("Sachin", 35, 28000, "Kolkata", "West Bengal"),
-				new Employee("Rahul", 45, 33300, "Bangalore", "Karnatka"),
-				new Employee("Saurav", 60, 45000, "Kochhi", "Kerala"),
-				new Employee("Nidhi", 48, 38000, "Pathankot", "Himachal Pradesh"),
-				new Employee("Pooja", 29, 88000, "Lucknow", "Uttar Pradesh"),
-				new Employee("Saurav", 60, 50, "Kochhi", "Gujrat"));
-	}
-
 }
-

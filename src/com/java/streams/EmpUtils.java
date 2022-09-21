@@ -1,6 +1,26 @@
 package com.java.streams;
 
-public class Employee {
+import java.util.Arrays;
+import java.util.List;
+
+public class EmpUtils {
+
+	public static List<Employee> getEmployeeList() {
+
+		return Arrays.asList(new Employee("Sumit", 25, 26000, "Pune", "Maharashtra"),
+				new Employee("Mohan", 20, 23000, "Bhopal", "Madhya Pradesh"),
+				new Employee("Naina", 26, 25000, "Delhi", "Delhi"),
+				new Employee("Sachin", 35, 28000, "Kolkata", "West Bengal"),
+				new Employee("Rahul", 45, 33300, "Bangalore", "Karnatka"),
+				new Employee("Saurav", 60, 45000, "Kochhi", "Kerala"),
+				new Employee("Nidhi", 48, 38000, "Pathankot", "Himachal Pradesh"),
+				new Employee("Pooja", 29, 88000, "Lucknow", "Uttar Pradesh"),
+				new Employee("Saurav", 60, 50, "Kochhi", "Gujrat"));
+	}
+
+}
+
+class Employee {
 	private String name;
 	private int age;
 	private int salary;
