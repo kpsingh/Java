@@ -12,10 +12,11 @@ public class EmpUtils {
 				new Employee("Naina", 26, 25000, "Delhi", "Delhi"),
 				new Employee("Sachin", 35, 28000, "Kolkata", "West Bengal"),
 				new Employee("Rahul", 45, 33300, "Bangalore", "Karnatka"),
+				new Employee("Aman", 45, 33300, "Bangalore", "Karnatka"),
 				new Employee("Saurav", 60, 45000, "Kochhi", "Kerala"),
 				new Employee("Nidhi", 48, 38000, "Pathankot", "Himachal Pradesh"),
 				new Employee("Pooja", 29, 88000, "Lucknow", "Uttar Pradesh"),
-				new Employee("Saurav", 60, 50, "Kochhi", "Gujrat"));
+				new Employee("Ishika", 60, 5000, "Bhopal", "Gujrat"));
 	}
 
 }
@@ -79,7 +80,6 @@ class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [name=" + name + ", age=" + age + ", salary=" + salary + ", city=" + city + ", state=" + state
-				+ "]";
+		return "Employee [name=" + name + ", city=" + city + "]";
 	}
 }

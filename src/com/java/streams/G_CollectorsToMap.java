@@ -33,58 +33,53 @@ public class G_CollectorsToMap {
 	public static void main(String[] args) {
 
 		List<Employee> employees = EmpUtils.getEmployeeList();
+
 		/**
-		 * get the State and name of person
-		 * 
+		 * Get the name of employee and their city
 		 * 
 		 */
 
-		employees.stream().collect(Collectors.toMap(e -> e.getState(), e -> e.getSalary())); // OR
-
-		employees.stream().collect(Collectors.toMap(Employee::getState, Employee::getName)).entrySet()
-				.forEach(System.out::println);
+		Map<String, String> empbyCity = employees.stream()
+				.collect(Collectors.toMap(Employee::getName, Employee::getCity));
+		empbyCity.entrySet().forEach(System.out::println);
 
 		/*
-		 * Problem with this is if two keys are duplicate then it throw the issue. If we
-		 * know keys are duplicate then we can use the overloaded method of toMap.
+		 * If duplicate key found then it will throw the exception in that case we have
+		 * to tale what to do when same key encountered again.
+		 *
 		 * 
-		 * To resolve it, we need to use a different method with an additional
-		 * parameter, the mergeFunction:
+		 * Key : City Name, Value : Name of Person,
 		 * 
-		 * For Example if key is Year then possibility multiple books in same years.
+		 * If many people from the same city, have the latest/ old name
 		 * 
+		 * (oldValye, newValye) -> oldValye OR newValye ; that is if the same key came
+		 * again replace its value by new key
 		 * 
-		 * (oldValye, newValye) -> newValye ; that is if the same key came again replace
-		 * its value by new key
 		 */
 
-		System.out.println();
+		System.out.println("\n**************\n");
 
-		Map<String, Integer> bookMapByYear = employees.stream()
-				.collect(Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2));
+		// if duplicate (e1, e2) -> e2 : keep the new employee name
+		Map<String, String> cityAndEmp = employees.stream()
+				.collect(Collectors.toMap(Employee::getCity, Employee::getName, (e1, e2) -> e2));
 
-		bookMapByYear.entrySet().stream().forEach(System.out::println);
+		cityAndEmp.entrySet().stream().forEach(System.out::println);
 
 		/*
-		 * Let say we store into map by key as ISBN and value as name
+		 * Get the name of employee and their salary
 		 * 
-		 * Lastly, let's see how to return a sorted map. For that, we'll use a TreeMap
-		 * as a mapSupplier parameter.
-		 * 
-		 * Because a TreeMap is sorted according to the natural ordering of its keys by
-		 * default, we don't have to explicitly sort.
-		 * 
+		 * have the name in sorted manner
 		 * 
 		 */
 
-		System.out.println("\nOrder by Key (ISBN)\n");
+		System.out.println("\nEmployee and their salary : order by Emp Name\n");
 
 		TreeMap<String, Integer> byISBNOrderByName = employees.stream()
 				.collect(Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2, TreeMap::new));
 
 		byISBNOrderByName.entrySet().stream().forEach(System.out::println);
 
-		System.out.println("\n*** Alternate Way for Above : Test Output ****\n");
+		System.out.println("\n*** Alternate Way : Employee and their salary : order by Emp Name ****\n");
 		TreeMap<String, Integer> test = employees.stream().collect(
 				Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2, () -> new TreeMap<>()));
 		test.entrySet().stream().forEach(System.out::println);
