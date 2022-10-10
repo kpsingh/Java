@@ -30,7 +30,7 @@ public class H_SemaphoreExample {
 		 */
 		for (int i = 0; i < 100; i++) {
 
-			service.execute(new Task6(semaphore));
+			service.submit(new Task6(semaphore));
 		}
 
 		service.shutdown();
