@@ -1,4 +1,4 @@
-package com.java.practice.string.map;
+package com.java.practice.map;
 
 import java.util.Comparator;
 import java.util.Map;
