@@ -25,7 +25,7 @@ public class MapMergeMethod {
 			}
 		}
 
-		map.entrySet().stream().forEach(e -> System.out.println(e));
+		//map.entrySet().stream().forEach(e -> System.out.println(e));
 		System.out.println("**********");
 
 		/**
