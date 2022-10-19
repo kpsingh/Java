@@ -21,12 +21,12 @@ public class TopKFrequentWords_692 {
 		String[] words = { "the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is" };
 		int k = 4;
 
-		List<String> topKFrequent = topKFrequent(words, k);
+		List<String> topKFrequent = topKFrequent_V1(words, k);
 
 		topKFrequent.forEach(s -> System.out.println(s));
 	}
 
-	public static List<String> topKFrequent(String[] words, int k) {
+	public static List<String> topKFrequent_V2(String[] words, int k) {
 
 		Map<String, Integer> map = new HashMap<>(); // To make sure key's are sorted order
 
@@ -49,7 +49,7 @@ public class TopKFrequentWords_692 {
 
 	}
 
-	public static List<String> topKFrequent_OLD(String[] words, int k) {
+	public static List<String> topKFrequent_V1(String[] words, int k) {
 
 		Map<String, Integer> map = new TreeMap<>();
 
