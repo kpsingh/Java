@@ -19,6 +19,8 @@ public class MergeSort {
 		}
 
 		int mid = low + (high - low) / 2;
+		
+		// assume that left and right array will be garbage collected immediately once call go back 
 
 		int[] left = sort(arr, low, mid);
 
@@ -33,6 +35,7 @@ public class MergeSort {
 		int n = left.length;
 		int m = right.length;
 
+		// space complexity will be O(n).. since it worst case it storing all the input
 		int[] result = new int[n + m];
 
 		int i = 0, j = 0, k = 0;
