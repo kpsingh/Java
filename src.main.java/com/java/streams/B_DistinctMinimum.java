@@ -3,6 +3,7 @@ package com.java.streams;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.stream.IntStream;
 
 /*
@@ -12,9 +13,6 @@ public class B_DistinctMinimum {
 	public static void main(String[] args) {
 		
 		
-		
-		ArrayList<Integer> list = new ArrayList<>();
-		Collections.reverse(list);
 
 		int[] arr = { 4, 7, 0, 13, 90, 16, 2, 10, 0 };
 
@@ -43,6 +41,10 @@ public class B_DistinctMinimum {
 		 */
 
 		IntStream.of(arr).distinct().sorted().limit(3).forEach(x -> System.out.print(x + " "));
+		System.out.println();
+		
+		
+		IntStream.of(arr).distinct().sorted().limit(3).forEach(System.out::println);
 
 	}
 	
