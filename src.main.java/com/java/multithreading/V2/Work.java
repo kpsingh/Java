@@ -2,6 +2,11 @@ package com.java.multithreading.V2;
 
 public class Work {
 
+	// if this lock onject is not used then the valye may not be correct incremented
+	// and race condition can ocured
+
+	private Object key = new Object();
+
 	private int value;
 
 	public Work() {
@@ -13,8 +18,11 @@ public class Work {
 	}
 
 	public void incremetnValue() {
-		this.value++;
+		// if we removed this synchronized block then race condition will happen
+		synchronized (key) {
+			this.value++;
+		}
+
 	}
-	
 
 }
