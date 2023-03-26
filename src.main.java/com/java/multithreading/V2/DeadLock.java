@@ -9,25 +9,22 @@ public class DeadLock {
 		Runnable work1 = () -> {
 			a.m1();
 		};
-		
+
 		Runnable work2 = () -> {
 			a.m2();
 		};
-		
 
 		Thread t1 = new Thread(work1);
 		Thread t2 = new Thread(work2);
 
 		t1.start();
 		t2.start();
-		
+
 		t1.join();
 		t2.join();
 
 	}
 }
-
-
 
 class A {
 
