@@ -3,6 +3,7 @@ package com.java.multithreading.V2;
 public class PrintOddEven {
 
 	public static void main(String[] args) {
+		
 		Print print = new Print(1);
 
 		Runnable oddTask = () -> {
