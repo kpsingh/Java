@@ -41,7 +41,7 @@ class Print {
 
 			try {
 				lock.lock();
-				
+
 				if (count % 2 != 0) {
 					isEven.await();
 				}
@@ -65,11 +65,11 @@ class Print {
 
 			try {
 				lock.lock();
-				
+
 				if (count % 2 == 0) {
 					isOdd.await();
 				}
-				
+
 				System.out.println("Odd : " + count++);
 				isEven.signal();
 
