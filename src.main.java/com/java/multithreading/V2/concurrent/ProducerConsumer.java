@@ -37,7 +37,7 @@ class Print {
 
 	public void printEven() {
 
-		while (count < 10) {
+		while (count < 5) {
 
 			try {
 				lock.lock();
@@ -61,7 +61,7 @@ class Print {
 
 	public void printOdd() {
 
-		while (count < 10) {
+		while (count < 5) {
 
 			try {
 				lock.lock();
