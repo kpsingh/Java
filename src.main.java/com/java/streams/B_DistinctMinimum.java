@@ -30,7 +30,7 @@ public class B_DistinctMinimum {
 			 * In fact in case of duplicate it not work; need to work extra, it print 0, 0,
 			 * 2 but it should print 0,2,4
 			 */
-			System.out.println(copy[i]); //
+			//System.out.println(copy[i]); //
 		}
 
 		/**
@@ -41,7 +41,7 @@ public class B_DistinctMinimum {
 		System.out.println();
 		
 		
-		IntStream.of(arr).distinct().sorted().limit(3).forEach(System.out::println);
+	//	IntStream.of(arr).distinct().sorted().limit(3).forEach(System.out::println);
 
 	}
 	
