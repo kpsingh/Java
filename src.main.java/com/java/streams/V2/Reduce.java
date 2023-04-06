@@ -12,7 +12,7 @@ public class Reduce {
 
 		BinaryOperator<Integer> op = (a, b) -> a + b;
 
-		int reduction = reduce(list, 0, op);
+		int reduction = reduce(list, 0, op); // single core or non-parallel computation
 
 		System.out.println(reduction);
 
