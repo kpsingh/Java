@@ -16,7 +16,7 @@ public class ListAPICollection {
 
 		list.removeIf(p -> p.getAge() > 30); // removeIf
 
-		list.replaceAll(p -> new Person(p.getName().toUpperCase(), p.getAge()));// replaceAll
+		list.replaceAll(p -> new Person(p.getName().toUpperCase(), p.getAge())); // replaceAll
 
 		list.sort(Comparator.comparing(p -> p.getAge())); // Comparator.comparing
 
