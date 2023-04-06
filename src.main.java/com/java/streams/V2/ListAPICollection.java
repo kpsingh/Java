@@ -24,7 +24,7 @@ public class ListAPICollection {
 
 		System.out.println("***********");
 
-		list.sort(Comparator.comparing(Person::getName));
+		list.sort(Comparator.comparing(Person::getName)); // sort
 
 		list.sort(Comparator.comparing(Person::getAge).thenComparing(Person::getName)); // Comparator.comparing(Person::getAge).thenComparing()
 
