@@ -2,6 +2,7 @@ package com.java.streams;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,9 @@ public class FindSecondMinMax {
 				.collect(Collectors.toList()); // get the top 3 excluding 1st max
 
 		System.out.println("Maxes are : " + maxLists);
+		
+		
+		list.stream().distinct().mapToInt(i -> i).max().getAsInt();
 
 	}
 

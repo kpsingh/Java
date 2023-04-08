@@ -16,7 +16,7 @@ public class D_PrintMaxEmployee_MapToInt {
 
 	public static void main(String[] args) {
 
-		List<Employee> empList = getEmployeeList();
+		List<Employee> empList = EmpUtils.getEmployeeList();
 
 		// 5th Ways - IMP - Best Way
 		System.out.println(empList.stream().mapToInt(e -> e.getSalary()).max().getAsInt());
@@ -70,40 +70,6 @@ public class D_PrintMaxEmployee_MapToInt {
 		System.out.println("\nPrint the employee based on salary natural order - Way 2");
 		empList.stream().sorted(Comparator.comparingInt(Employee::getSalary)).forEach(System.out::println);
 
-		/**
-		 * let suppose we had array instead of (list, set, map) of those object then how
-		 * would you have done it ? array can be either primitive or custom array
-		 */
-
-		Employee[] arr = { new Employee("Sumit", 25, 26000, "Pune", "Maharashtra"),
-				new Employee("Mohan", 20, 23000, "Bhopal", "Madhya Pradesh"),
-				new Employee("Naina", 26, 25000, "Delhi", "Delhi"),
-				new Employee("Sachin", 35, 28000, "Kolkata", "West Bengal"),
-				new Employee("Rahul", 45, 33300, "Bangalore", "Karnatka"),
-				new Employee("Saurav", 60, 45000, "Kochhi", "Kerala"),
-				new Employee("Nidhi", 48, 38000, "Pathankot", "Himachal Pradesh"),
-				new Employee("Pooja", 29, 88000, "Lucknow", "Uttar Pradesh"),
-				new Employee("Saurav", 60, 10000, "Kochhi", "Kerala") };
-
-		// 1st way
-		System.out.println(Arrays.stream(arr).mapToInt(e -> e.getSalary()).max().getAsInt());
-
-		// 2nd way : Internally Stream.of calls Arrays.stream();
-		System.out.println(Stream.of(arr).mapToInt(Employee::getSalary).max().getAsInt());
-
-	}
-
-	public static List<Employee> getEmployeeList() {
-
-		return Arrays.asList(new Employee("Sumit", 25, 26000, "Pune", "Maharashtra"),
-				new Employee("Mohan", 20, 23000, "Bhopal", "Madhya Pradesh"),
-				new Employee("Naina", 26, 25000, "Delhi", "Delhi"),
-				new Employee("Sachin", 35, 28000, "Kolkata", "West Bengal"),
-				new Employee("Rahul", 45, 33300, "Bangalore", "Karnatka"),
-				new Employee("Saurav", 60, 45000, "Kochhi", "Kerala"),
-				new Employee("Nidhi", 48, 38000, "Pathankot", "Himachal Pradesh"),
-				new Employee("Pooja", 29, 88000, "Lucknow", "Uttar Pradesh"),
-				new Employee("Saurav", 60, 10000, "Kochhi", "Kerala"));
 	}
 
 }

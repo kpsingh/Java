@@ -1,6 +1,8 @@
 package com.java.streams;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -45,6 +47,10 @@ public class E_ArraysStream_MapToInt {
 		 */
 		System.out.println();
 		Stream.of(intstr.split(" ")).mapToInt(Integer::parseInt).forEach(System.out::println);
+
+		System.out.println();
+		Stream.of(intstr.split(" ")).map(Integer::parseInt).sorted(Collections.reverseOrder())
+				.forEach(System.out::println);
 
 	}
 
