@@ -1,5 +1,6 @@
 package com.java.streams;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -45,7 +46,7 @@ public class G_CollectorsToMap {
 
 		/*
 		 * If duplicate key found then it will throw the exception in that case we have
-		 * to tale what to do when same key encountered again.
+		 * to tell what to do when same key encountered again.
 		 *
 		 * 
 		 * Key : City Name, Value : Name of Person,
@@ -79,9 +80,9 @@ public class G_CollectorsToMap {
 
 		byISBNOrderByName.entrySet().stream().forEach(System.out::println);
 
-		System.out.println("\n*** Alternate Way : Employee and their salary : order by Emp Name ****\n");
+		System.out.println("\n*** Alternate Way : Employee and their salary : order by Emp Name - Reverse Order ****\n");
 		TreeMap<String, Integer> test = employees.stream().collect(
-				Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2, () -> new TreeMap<>()));
+				Collectors.toMap(Employee::getName, Employee::getSalary, (e1, e2) -> e2, () -> new TreeMap<>(Collections.reverseOrder())));
 		test.entrySet().stream().forEach(System.out::println);
 	}
 
