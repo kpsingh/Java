@@ -52,9 +52,28 @@ public class FindTheDuplicateNumbers {
 		 * 
 		 */
 
-		Map<Integer, Long> dupMap = list.stream().collect(Collectors.groupingBy(i -> i, Collectors.counting()));
+		Map<Integer, Long> dupMap = list.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
 		dupMap.entrySet().stream().filter(e -> e.getValue() > 1).map(e -> e.getKey()).forEach(System.out::println);
+
+		// use streams and collect to get a list of duplicate numbers
+		List<Integer> duplicates = list.stream().filter(n -> list.stream().filter(x -> x.equals(n)).count() > 1)
+				.distinct().collect(Collectors.toList());
+
+		// print out the list of duplicate numbers
+		System.out.println("Duplicate numbers: " + duplicates);
+
+		/**
+		 * Alternatively
+		 */
+
+		// use stream API to filter out distinct elements and collect the duplicates
+		duplicates = list.stream().filter(i -> list.indexOf(i) != list.lastIndexOf(i)).distinct()
+				.collect(Collectors.toList());
+
+		// print the duplicates
+		System.out.println("Duplicates: " + duplicates);
 
 	}
 }
