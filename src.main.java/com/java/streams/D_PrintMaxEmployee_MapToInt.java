@@ -40,6 +40,14 @@ public class D_PrintMaxEmployee_MapToInt {
 		empList.stream().sorted(Comparator.comparingInt(Employee::getSalary).reversed()).forEach(System.out::println);
 
 		/**
+		 * Print the employee based on NAMES
+		 */
+
+		System.out.println("\nPrint the employee based on NAMES : Sorted : \n");
+
+		empList.stream().sorted(Comparator.comparing(Employee::getName)).forEach(System.out::println);
+
+		/**
 		 * Print the employee details with third highest salary
 		 */
 
