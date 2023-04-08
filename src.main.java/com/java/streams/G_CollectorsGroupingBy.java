@@ -99,6 +99,10 @@ public class G_CollectorsGroupingBy {
 
 		nameByCitySorted.entrySet().stream().forEach(System.out::println);
 
+		System.out.println("**********");
+
+		employeeList.stream().collect(Collectors.groupingBy(Employee::getCity, TreeMap::new,
+				Collectors.toCollection(() -> new TreeSet<>(Comparator.comparing(Employee::getName)))));
 	}
 
 }
