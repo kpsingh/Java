@@ -11,7 +11,7 @@ public class HashMapSortAdvance {
 		/*
 		 * Use the Tree Map if we need to sort by Key and Value.
 		 * 
-		 * TreeMap will is s kind of sorted may by key and you only need to sort the map
+		 * TreeMap will is kind of sorted may by key and you only need to sort the map
 		 * by values.
 		 */
 		TreeMap<String, Integer> map = new TreeMap<>();
