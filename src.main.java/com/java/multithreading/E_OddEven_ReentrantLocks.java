@@ -3,7 +3,7 @@ package com.java.multithreading;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class E_ReentrantLocks {
+public class E_OddEven_ReentrantLocks {
 
 	public static void main(String[] args) {
 
