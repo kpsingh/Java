@@ -12,37 +12,28 @@ public class F_PorducerConsumer {
 	public static void main(String[] args) {
 
 		BlockingQueue<Integer> q = new ArrayBlockingQueue<>(5);
-		
+
 		ExecutorService service = Executors.newFixedThreadPool(2);
 
 		Runnable producer = () -> {
-			while (true) {
+			while (a < 10) {
 				try {
-
-					System.out.println("Produced : " + a);
-
 					q.put(a++);
-
-					Thread.sleep(1000);
-
+					Thread.sleep(500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
 			}
 
 		};
 
 		Runnable consumer = () -> {
-			while (true) {
+			while (a < 10) {
 				try {
-
-					System.out.println("Consumed : " + q.take());
-
+					System.out.println(q.take());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-
 			}
 
 		};

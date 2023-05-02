@@ -19,7 +19,7 @@ public class F_FlatMap {
 		List<Person> customerList = CustomerList.getCustomerList();
 		System.out.println(customerList);
 
-		List<Integer> ids = customerList.stream().map(e -> e.getId()).collect(Collectors.toList());
+		List<Integer> ids = customerList.stream().map(Person::getId).collect(Collectors.toList());
 
 		System.out.println(ids);
 
@@ -30,7 +30,7 @@ public class F_FlatMap {
 		 * 
 		 */
 
-		List<List<Integer>> collectPhone = customerList.stream().map(e -> e.getPhone()).collect(Collectors.toList());
+		List<List<Integer>> collectPhone = customerList.stream().map(Person::getPhone).collect(Collectors.toList());
 
 		System.out.println(collectPhone);
 
@@ -94,7 +94,6 @@ class Person {
 	public String toString() {
 		return "Person [id=" + id + ", email=" + email + ", phone=" + phone + "]";
 	}
-	
 
 }
 
@@ -103,9 +102,8 @@ class CustomerList {
 	public static List<Person> getCustomerList() {
 
 		return Stream.of(new Person(101, "Krishna", Arrays.asList(123, 456)),
-						 new Person(102, "Rohit", Arrays.asList(126, 456)), 
-						 new Person(103, "Aman", Arrays.asList(455, 5555)),
-						 new Person(104, "Ish", Arrays.asList(888))
+				new Person(102, "Rohit", Arrays.asList(126, 456)), new Person(103, "Aman", Arrays.asList(455, 5555)),
+				new Person(104, "Ish", Arrays.asList(888))
 
 		).collect(Collectors.toList());
 

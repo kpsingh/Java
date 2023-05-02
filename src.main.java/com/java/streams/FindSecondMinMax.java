@@ -44,7 +44,7 @@ public class FindSecondMinMax {
 		System.out.println("Maxes are : " + maxLists);
 		
 		
-		list.stream().distinct().mapToInt(i -> i).max().getAsInt();
+		list.stream().distinct().sorted(Comparator.reverseOrder()).limit(3).forEach(System.out::println);
 
 	}
 

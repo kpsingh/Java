@@ -65,7 +65,7 @@ public class FindTheDuplicateNumbers {
 		System.out.println("Duplicate numbers: " + duplicates);
 
 		/**
-		 * Alternatively
+		 * Alternatively - Beautiful
 		 */
 
 		// use stream API to filter out distinct elements and collect the duplicates
