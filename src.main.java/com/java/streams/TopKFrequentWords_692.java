@@ -63,7 +63,10 @@ public class TopKFrequentWords_692 {
 		 * for(String w : words){ int c = map.getOrDefault(w,0); c++; map.put(w,c); }
 		 */
 
-		return map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(k)
+		map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEach(System.out::println);
+				
+				
+		return map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(1)
 				.map(e -> e.getKey()).collect(Collectors.toList());
 
 	}
