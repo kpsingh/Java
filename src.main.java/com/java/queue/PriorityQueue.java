@@ -1,6 +1,8 @@
 package com.java.queue;
 
+import java.util.ArrayDeque;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.Queue;
 
 public class PriorityQueue {
@@ -25,6 +27,22 @@ public class PriorityQueue {
 		}
 
 		System.out.println(pq.peek());
+		
+		
+		// FIFO Queue
+		Queue<Integer> q = new ArrayDeque<>();
+		q.offer(1);
+		q.poll();
+		q.peek();
+		
+		// FIFO + LIFO Queue : Double Ended Queue
+		Deque<Integer> deq = new ArrayDeque<>();
+		deq.offer(1);
+		deq.push(3);
+		deq.pop();
+		deq.poll();
+		deq.peek();
+		
 
 	}
 
