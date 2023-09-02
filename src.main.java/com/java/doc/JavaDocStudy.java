@@ -12,11 +12,16 @@ public class JavaDocStudy {
 		list.add(2);
 		System.out.println(list);
 		
-		Integer[] arr = new Integer[1];
+		Integer[] arr= new Integer[1];
+		
 		arr = list.toArray(arr);
 		for(int a : arr) {
 			System.out.println(a);
 		}
+		
+		list.stream().mapToInt(i -> i).toArray();
+		list.stream().mapToDouble(i -> i).toArray();
+		
 		
 	}
 
