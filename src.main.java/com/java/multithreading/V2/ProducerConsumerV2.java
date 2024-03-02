@@ -1,4 +1,4 @@
-package com.java.multithreading.V2.concurrent;
+package com.java.multithreading.V2;
 
 import java.util.ArrayList;
 import java.util.List;

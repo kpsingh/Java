@@ -1,4 +1,4 @@
-package com.java.multithreading.V2.concurrent;
+package com.java.multithreading.V2;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,7 +12,7 @@ public class ProducerConsumer {
 
 		ExecutorService service = Executors.newFixedThreadPool(2);
 
-		Print p = new Print(1);
+		Print1 p = new Print1(1);
 
 		service.execute(() -> p.printEven());
 		service.execute(() -> p.printOdd());
@@ -23,7 +23,7 @@ public class ProducerConsumer {
 
 }
 
-class Print {
+ class Print1 {
 
 	private int count;
 
@@ -31,7 +31,7 @@ class Print {
 	Condition isEven = lock.newCondition();
 	Condition isOdd = lock.newCondition();
 
-	public Print(int count) {
+	public Print1(int count) {
 		this.count = count;
 	}
 
