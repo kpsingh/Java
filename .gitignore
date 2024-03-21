@@ -13,3 +13,8 @@ src/com/.DS_Store
 .idea/misc.xml
 .idea/vcs.xml
 .DS_Store
+/.idea/.gitignore
+/GitHub.iml
+/out/production/GitHub/resources/Java Garbage Collection Basics.pdf
+/.idea/modules.xml
+/out/production/GitHub/resources/Notes

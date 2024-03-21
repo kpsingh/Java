@@ -36,7 +36,6 @@ public class Sorter implements Callable<List<Integer>> {
         Future<List<Integer>> rightFuture = executorService.submit(rightToSort);
 
         // now get the left sorted and right sorted and merge them
-
         List<Integer> leftSorted = leftFuture.get();
         List<Integer> rightSorted = rightFuture.get();
 
