@@ -8,8 +8,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class Sorter implements Callable<List<Integer>> {
-    private List<Integer> arrayToSort;
-    private ExecutorService executorService;
+    private final List<Integer> arrayToSort;
+    private final ExecutorService executorService;
 
     public Sorter(List<Integer> arrayToSort, ExecutorService executorService) {
         this.arrayToSort = arrayToSort;
