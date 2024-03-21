@@ -1,24 +1,23 @@
-package com.java.multithreading.V3;
+package com.java.multithreading.V3.addersubs.methodsynch;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class AdderSubtractClient {
     public static void main(String[] args) throws InterruptedException {
-        MyNumber num = new MyNumber();
-        num.value = 0;
-        Lock lock = new ReentrantLock();
+        Count count = new Count();
 
-        Adder add = new Adder(num, lock);
-        Substractor sub = new Substractor(num, lock);
+        Adder add = new Adder(count);
+        Subtract sub = new Subtract(count);
+
         ExecutorService es = Executors.newCachedThreadPool();
         es.execute(add);
         es.execute(sub);
+
         es.shutdown();
         es.awaitTermination(100L, TimeUnit.SECONDS);
-        System.out.println(num.value);
+
+        System.out.println(count.getCount());
     }
 }
