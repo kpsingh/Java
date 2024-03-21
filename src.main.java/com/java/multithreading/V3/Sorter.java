@@ -8,10 +8,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class Sorter implements Callable<List<Integer>> {
-    List<Integer> arrayToSort;
+    private List<Integer> arrayToSort;
+    private ExecutorService executorService;
 
-    public Sorter(List<Integer> arrayToSort) {
+    public Sorter(List<Integer> arrayToSort, ExecutorService executorService) {
         this.arrayToSort = arrayToSort;
+        this.executorService = executorService;
     }
 
     @Override
@@ -27,18 +29,16 @@ public class Sorter implements Callable<List<Integer>> {
         List<Integer> rightArray = arrayToSort.subList(mid, n);
 
         // now submit the task to executor so they sort and return to us
-        Sorter leftToSort = new Sorter(leftArray);
-        Sorter rightToSort = new Sorter(rightArray);
+        Sorter leftToSort = new Sorter(leftArray, executorService);
+        Sorter rightToSort = new Sorter(rightArray, executorService);
 
-        ExecutorService service = Executors.newCachedThreadPool();
-        Future<List<Integer>> leftFuture = service.submit(leftToSort);
-        Future<List<Integer>> rightFuture = service.submit(rightToSort);
+        Future<List<Integer>> leftFuture = executorService.submit(leftToSort);
+        Future<List<Integer>> rightFuture = executorService.submit(rightToSort);
 
         // now get the left sorted and right sorted and merge them
 
         List<Integer> leftSorted = leftFuture.get();
         List<Integer> rightSorted = rightFuture.get();
-        service.shutdown();
 
         return merge(leftSorted, rightSorted);
     }
