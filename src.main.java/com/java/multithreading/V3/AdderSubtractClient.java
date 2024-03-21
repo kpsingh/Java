@@ -3,18 +3,22 @@ package com.java.multithreading.V3;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class AdderSubtractorClient {
+public class AdderSubtractClient {
     public static void main(String[] args) throws InterruptedException {
         MyNumber num = new MyNumber();
-        num.i = 0;
-        Adder add = new Adder(num);
-        Substractor sub = new Substractor(num);
+        num.value = 0;
+        Lock lock = new ReentrantLock();
+
+        Adder add = new Adder(num, lock);
+        Substractor sub = new Substractor(num, lock);
         ExecutorService es = Executors.newCachedThreadPool();
         es.execute(add);
         es.execute(sub);
         es.shutdown();
         es.awaitTermination(100L, TimeUnit.SECONDS);
-        System.out.println(num.i);
+        System.out.println(num.value);
     }
 }
