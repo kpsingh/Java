@@ -5,6 +5,7 @@ import com.java.multithreading.V3.MyNumber;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -22,5 +23,7 @@ public class AdderSubtractClient {
         es.shutdown();
         es.awaitTermination(100L, TimeUnit.SECONDS);
         System.out.println(num.value);
+
+        AtomicInteger i = new AtomicInteger();
     }
 }
