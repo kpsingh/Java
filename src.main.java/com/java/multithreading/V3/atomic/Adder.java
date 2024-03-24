@@ -1,8 +1,8 @@
 package com.java.multithreading.V3.atomic;
 
 public class Adder implements  Runnable{
-    private Count count;
-    public Adder(Count count){
+    private final Count count;
+    public Adder( Count count){
         this.count = count;
     }
 
