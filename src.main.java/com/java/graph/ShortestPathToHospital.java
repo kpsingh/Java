@@ -22,32 +22,34 @@ public class ShortestPathToHospital {
         for (int[] a : ans) {
             Arrays.fill(a, -1);
         }
-        Queue<Grid> q = new LinkedList<>();
+        Queue<Node> q = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (arr[i][j] == 'H') {
                     ans[i][j] = 0;
-                    q.add(new Grid(i, j));
+                    Grid grid = new Grid(i,j);
+                    q.add(new Node(grid, 0));
                 }
             }
         }
 
-        int distance = 0;
         while (!q.isEmpty()) {
             int level = q.size();
-            distance++;
             for (int i = 0; i < level; i++) {
-                Grid grid = q.poll();
+                Node node = q.poll();
                 // check all 4 directional valid cells from a grid there is 4 move possible,
                 int[] X = {0, -1, 0, 1};
                 int[] Y = {1, 0, -1, 0};
+
                 for (int k = 0; k < X.length; k++) {
-                    int ni = grid.i + X[k];
-                    int nj = grid.j + Y[k];
+                    int ni = node.grid.i + X[k];
+                    int nj = node.grid.j + Y[k];
+
                     boolean isValidCell = isValid(ni, nj, ans);
                     if (isValidCell) {
-                        ans[ni][nj] = distance;
-                        q.add(new Grid(ni, nj));
+                        ans[ni][nj] = node.distance + 1;
+                        Grid grid = new Grid(ni, nj);
+                        q.add(new Node(grid, node.distance + 1));
                     }
                 }
             }
@@ -56,10 +58,19 @@ public class ShortestPathToHospital {
     }
 
     private static boolean isValid(int ni, int nj, int[][] ans) {
-        if (ni < 0 || ni >= ans.length || nj < 0 || nj >= ans.length || ans[ni][nj] != -1) {
+        if (ni < 0 || ni >= ans.length || nj < 0 || nj >= ans[0].length || ans[ni][nj] != -1) {
             return false;
         }
         return true;
+    }
+}
+
+class Node {
+    int distance;
+    Grid grid;
+    Node(Grid grid, int distance){
+        this.grid = grid;
+        this.distance = distance;
     }
 }
 
