@@ -32,7 +32,8 @@ public class Dijkstra {
             Vertex currNode = pq.poll();
             int currVertexDistance = currNode.distance;
             for (Vertex nbrNode : adjList.get(currNode.value)) {
-                int nbrDistance = currVertexDistance + getDistance(currNode, nbrNode, adjList);
+               // int nbrDistance = currVertexDistance + getDistance(currNode, nbrNode, adjList);
+                int nbrDistance = currVertexDistance + nbrNode.distance;
                 if (dis[nbrNode.value] > nbrDistance) {
                     dis[nbrNode.value] = nbrDistance;
                     pq.offer(new Vertex(nbrNode.value, nbrDistance));
@@ -43,7 +44,7 @@ public class Dijkstra {
         return dis;
     }
 
-    private static int getDistance(Vertex u, Vertex v, Map<Integer, List<Vertex>> adjList) {
+ /*   private static int getDistance(Vertex u, Vertex v, Map<Integer, List<Vertex>> adjList) {
         for (Vertex nbr : adjList.get(u.value)) {
             if (nbr.value == v.value) {
                 return nbr.distance;
@@ -51,7 +52,7 @@ public class Dijkstra {
         }
         return 0;
     }
-
+*/
     private static Map<Integer, List<Vertex>> populateGraph(int n, int[][] edges) {
         Map<Integer, List<Vertex>> adjList = new HashMap<>();
         for (int node = 1; node <= n; node++) {
