@@ -13,13 +13,13 @@ public class PredicateStringLength {
         System.out.println("Enter size of the array");
         int n = sc.nextInt();
 
-        String arr[] = new String[n];
+        String[] arr = new String[n];
 
         System.out.println("Please enter the names");
         for (int i = 0; i < n; i++) {
             arr[i] = sc.next();
         }
-        System.out.println(arr);
+        System.out.println(Arrays.toString(arr));
 
         // Print only those names whose length are > 4
 
