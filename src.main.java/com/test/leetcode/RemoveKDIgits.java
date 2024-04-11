@@ -24,7 +24,7 @@ public class RemoveKDIgits {
         }
         while (!st.isEmpty() && k > 0) {
             st.pop(); // in case elements where increasing order
-            k--
+            k--;
         }
 
         StringBuilder sb = new StringBuilder();
