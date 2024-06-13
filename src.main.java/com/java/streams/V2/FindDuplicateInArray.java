@@ -23,7 +23,10 @@ public class FindDuplicateInArray {
 
         Map<Integer, Long> groupByMap = Arrays.stream(array).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         List<Integer> nonUnique = groupByMap.entrySet().stream().filter(e -> e.getValue() > 1).map(e -> e.getKey()).collect(Collectors.toList());
+        //List<Integer> nonUnique = groupByMap.entrySet().stream().filter(e -> e.getValue() > 1).map(Map.Entry::getKey).collect(Collectors.toList());
         System.out.println(nonUnique);
+
+
 
     }
 }
