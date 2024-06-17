@@ -11,7 +11,6 @@ public class FindDigitInBinary {
         binary = toBinaryString(n);
         System.out.println("Custom Code : " + binary);
 
-
     }
 
     private static String toBinaryString(int n) {
