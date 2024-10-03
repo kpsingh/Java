@@ -12,7 +12,7 @@ public class TwoDiff {
         if (arr == null || arr.length < 2) {
             return false;
         }
-        int j = 0, i = 1;
+        int j = 0, i = 1; // Initialization is the important things
         while (i < arr.length) {
             if (arr[i] - arr[j] == k) {
                 return true;
