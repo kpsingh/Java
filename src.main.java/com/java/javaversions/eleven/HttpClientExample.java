@@ -19,9 +19,15 @@ public class HttpClientExample {
                 .GET()
                 .build();
 
+        HttpRequest request2 = HttpRequest.newBuilder()
+                .uri(URI.create("https://api.github.com/"))
+                .POST(HttpRequest.BodyPublishers.ofString("{}")) // POST method call
+                .build();
+
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
         System.out.println(response.statusCode());
+        System.out.println(response.body());
         System.out.println(response.body());
     }
 }
