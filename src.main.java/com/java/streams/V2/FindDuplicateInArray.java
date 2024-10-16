@@ -3,29 +3,32 @@ package com.java.streams.V2;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FindDuplicateInArray {
     public static void main(String[] args) {
-        String[] names = {"Krishns", "Ram", "Mohan", "Ram"};
 
-        List<String> collect = Arrays.stream(names)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())) // Group by element and count
-                .entrySet().stream()
-                .filter(entry -> entry.getValue() > 1) // Filter elements with count greater than 1
-                .map(Map.Entry::getKey) // Extract the keys (the elements)
-                .collect(Collectors.toList());// Collect as a list
+        // Sample List with duplicates
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 3, 6, 2, 7, 8, 9, 5);
 
-        System.out.println(collect);
+        // Find duplicates using Stream API
+        Set<Integer> duplicates = numbers.stream()
+                .collect(Collectors.groupingBy(num -> num, Collectors.counting())) // Group by number, count occurrences
+                .entrySet().stream() // Convert map entries to stream
+                .filter(entry -> entry.getValue() > 1) // Filter entries with count > 1 (i.e., duplicates)
+                .map(Map.Entry::getKey) // Extract the keys (numbers)
+                .collect(Collectors.toSet()); // Collect duplicates into a Set
 
-        Integer[] array = {1, 2, 3, 4, 5, 1, 4, 6, 7, 8, 9, 5};
+        // Print the duplicates
+        System.out.println("Duplicate elements: " + duplicates);
 
-        Map<Integer, Long> groupByMap = Arrays.stream(array).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        List<Integer> nonUnique = groupByMap.entrySet().stream().filter(e -> e.getValue() > 1).map(e -> e.getKey()).collect(Collectors.toList());
-        //List<Integer> nonUnique = groupByMap.entrySet().stream().filter(e -> e.getValue() > 1).map(Map.Entry::getKey).collect(Collectors.toList());
-        System.out.println(nonUnique);
+        String[] names = {"Krishna", "Ram", "Mohan", "Ram"};
+        Set<String> nameDup = Arrays.stream(names).collect(Collectors.groupingBy(word -> word, Collectors.counting()))
+                .entrySet().stream().filter(entry -> entry.getValue() > 1).map(word -> word.getKey()).collect(Collectors.toSet());
 
+        System.out.println("Duplicate names: " + nameDup);
 
 
     }

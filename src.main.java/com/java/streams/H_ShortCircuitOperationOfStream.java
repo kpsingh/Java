@@ -14,7 +14,7 @@ import javax.sound.midi.Soundbank;
 public class H_ShortCircuitOperationOfStream {
 	public static void main(String[] args) {
 
-		List<String> list = Arrays.asList("Rohit", "Krishna", "Ishika", "Neha", "Sandhya", "Raman", "Neeraj");
+		List<String> list = Arrays.asList("Rohit", "Krishna", "Ishika", "Naman", "Sandhya", "Raman", "Ankit");
 
 		// findFirst is one of the short circuit operation
 
@@ -36,7 +36,7 @@ public class H_ShortCircuitOperationOfStream {
 		 * https://stackoverflow.com/questions/35359112/difference-between-findany-and-findfirst-in-java-8
 		 * 
 		 * for PARALLEL stream they may behave DIFFERENT but for sequential stream
-		 * findFirst() and findAny() behave SAME. IDEMPOTENT in nature.. that mean
+		 * findFirst() and findAny() behave SAME. IDEMPOTENT in nature, that mean
 		 * return the same result on every run
 		 * 
 		 */
