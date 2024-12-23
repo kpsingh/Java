@@ -1,15 +1,12 @@
 package com.java.queue;
 
-import java.util.ArrayDeque;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.Queue;
+import java.util.*;
 
-public class PriorityQueue {
+public class MyPriorityQueue {
 
 	public static void main(String[] args) {
 
-		Queue<Integer> pq = new java.util.PriorityQueue<>(Collections.reverseOrder()); // max heap
+		Queue<Integer> pq =  new PriorityQueue(Collections.reverseOrder()); // max heap, by default it is min heap
 
 		int[] arr = { 2, 7, 4, 1, 8, 1 };
 		

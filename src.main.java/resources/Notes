@@ -704,7 +704,7 @@ Just to summarize here are the answers which does makes sense for above question
 
 How HashMap  works in Java
 HashMap  works on principle of hashing, we have put() and get() method for storing and retrieving object form HashMap .When we pass an both key and value to put() method to store on HashMap , it uses key object hashcode() method to calculate hashcode and they by applying hashing on that hashcode it identifies bucket location for storing value object. 
-While retrieving it uses key object equals method to find out correct key value pair and return value object associated with that key. 
+While retrieving it uses key object equals method to find out correct key value com.test.pair and return value object associated with that key.
 HashMap uses linked list in case of collision and object will be stored in next node of linked list.
 Also HashMap stores both key+value tuple in every node of linked list.
 
@@ -714,7 +714,7 @@ Difference between HashSet and HashMap:--->
                Hash Map            								Hash Set
 		--------------------								-----------------	   
 # HashMap is a implementation of Map interface					HashSet is an implementation of Set Interface.
-# HashMap Stores data in form of  key/value pair				HashSet Store only objects.
+# HashMap Stores data in form of  key/value com.test.pair				HashSet Store only objects.
 # Put method is used to add element in map and return void		Add method is used to add element in Set and it returns boolean.
 # In hash map hashcode value is calculated using key object		Here member object is used for calculating hashCode value which can be same for two objects so  
                                                                 equals() method is used to check for equality if it returns false that means two objects are different.
