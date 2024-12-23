@@ -12,6 +12,8 @@ public class TestStackMin {
         stack.push(4);
         stack.push(9);
         stack.push(7);
+        stack.push(9);
+
 
         System.out.println("Value at top: " + stack.peek());
         System.out.println("Min Value: " + stack.min());
