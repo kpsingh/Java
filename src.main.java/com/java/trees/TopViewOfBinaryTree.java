@@ -2,8 +2,7 @@ package com.java.trees;
 
 import java.util.*;
 
-public class VerticalOrderTraversal {
-
+public class TopViewOfBinaryTree {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(5);
         root.left = new TreeNode(3);
@@ -13,12 +12,15 @@ public class VerticalOrderTraversal {
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(10);
 
-        ArrayList<Integer> lists = topViewOfBinaryTree(root);
-        System.out.println(lists);
+        List<List<Integer>> lists = verticalOrder(root);
+        for (List<Integer> list : lists) {
+            System.out.println(list);
+        }
+
     }
-    private static ArrayList<Integer> topViewOfBinaryTree(TreeNode root) {
-        ArrayList<Integer> result = new ArrayList<>();
-        Map<Integer, Integer> map = new HashMap<>(); // tree map to store sorted order of distance
+    private static List<List<Integer>> verticalOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        TreeMap<Integer, List<Integer>> map = new TreeMap<>(); // tree map to store sorted order of distance
         if (root == null) {
             return result;
         }
@@ -28,9 +30,8 @@ public class VerticalOrderTraversal {
             Pair pair = queue.poll();
             TreeNode node = pair.node;
             int d = pair.d;
-            if (!map.containsKey(d)) {
-               map.put(d, node.val);
-            }
+            map.putIfAbsent(d, new ArrayList<>()); // if first time then insert the linked list
+            map.get(d).add(node.val);
             if (node.left != null) {
                 queue.add(new Pair(node.left, d - 1));
             }
@@ -38,10 +39,7 @@ public class VerticalOrderTraversal {
                 queue.add(new Pair(node.right, d + 1));
             }
         }
-        for(Integer key : map.keySet()) {
-            result.add(map.get(key));
-        }
-        return result;
+        return new ArrayList<>(map.values());
     }
-}
 
+}
