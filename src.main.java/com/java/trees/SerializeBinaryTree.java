@@ -9,29 +9,21 @@ public class SerializeBinaryTree {
         System.out.println(serialize);
     }
 
-    public static ArrayList<Integer> serialize(TreeNode root) {
-        ArrayList<Integer> ans = new ArrayList<>();
-        if (root == null) {
-            return ans;
-        }
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            TreeNode tempNode = queue.poll();
-            ans.add(tempNode.val);
-
-            if (tempNode.left != null) {
-                queue.add(tempNode.left);
-            } else {
-                if (tempNode.val != -1) queue.add(new TreeNode(-1));
-            }
-
-            if (tempNode.right != null) {
-                queue.add(tempNode.right);
-            } else {
-                if (tempNode.val != -1) queue.add(new TreeNode(-1));
+    public static ArrayList<Integer> serialize(TreeNode A) {
+        ArrayList<Integer> result = new ArrayList<>();
+        if(A == null) return result;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(A);
+        while(!q.isEmpty()){
+            TreeNode temp = q.poll();
+            if(temp != null){
+                result.add(temp.val);
+                q.add(temp.left);
+                q.add(temp.right);
+            }else{
+                result.add(-1);
             }
         }
-        return ans;
+        return result;
     }
 }
