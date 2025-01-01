@@ -2,16 +2,18 @@ package com.java.trees;
 
 import java.util.*;
 
-public class TopViewOfBinaryTree {
-
+public class VerticalOrderOfBinaryTree {
     public static void main(String[] args) {
         TreeNode root = TestUtil.getRoot();
-        ArrayList<Integer> lists = topViewOfBinaryTree(root);
-        System.out.println(lists);
+        List<List<Integer>> lists = verticalOrder(root);
+        for (List<Integer> list : lists) {
+            System.out.println(list);
+        }
+
     }
-    public static ArrayList<Integer> topViewOfBinaryTree(TreeNode root) {
-        ArrayList<Integer> result = new ArrayList<>();
-        Map<Integer, Integer> map = new HashMap<>(); // tree map to store sorted order of distance
+    public static List<List<Integer>> verticalOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        TreeMap<Integer, List<Integer>> map = new TreeMap<>(); // tree map to store sorted order of distance
         if (root == null) {
             return result;
         }
@@ -21,9 +23,8 @@ public class TopViewOfBinaryTree {
             Pair pair = queue.poll();
             TreeNode node = pair.node;
             int d = pair.d;
-            if (!map.containsKey(d)) {
-               map.put(d, node.val);
-            }
+            map.putIfAbsent(d, new ArrayList<>()); // if first time then insert the linked list
+            map.get(d).add(node.val);
             if (node.left != null) {
                 queue.add(new Pair(node.left, d - 1));
             }
@@ -31,10 +32,7 @@ public class TopViewOfBinaryTree {
                 queue.add(new Pair(node.right, d + 1));
             }
         }
-        for(Integer key : map.keySet()) {
-            result.add(map.get(key));
-        }
-        return result;
+        return new ArrayList<>(map.values());
     }
-}
 
+}
