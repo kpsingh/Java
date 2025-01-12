@@ -1,5 +1,7 @@
 package com.java.trees;
 
+import com.sun.source.tree.Tree;
+
 import java.util.*;
 
 public class DeSerializeBinaryTree {
@@ -9,27 +11,27 @@ public class DeSerializeBinaryTree {
     }
 
     public static TreeNode deserialize(List<Integer> data) {
-        Queue<Pair> queue = new LinkedList<>();
-        TreeNode root = new TreeNode(data.get(0));
-        queue.offer(new Pair(root, 0));
+        int i = 0;
+        Queue<TreeNode> queue = new LinkedList<>();
+        TreeNode root = new TreeNode(data.get(i));
+        queue.add(root);
         while (!queue.isEmpty()) {
-            Pair pair = queue.poll();
-            TreeNode temp = pair.node;
-            int d = pair.d;
-            int leftChild = 2 * d + 1;
-            int rightChild = 2 * d + 2;
-            if(data.get(leftChild) != -1){
-                TreeNode leftChildNode = new TreeNode(data.get(leftChild));
-                temp.left = leftChildNode;
-                queue.offer(new Pair(leftChildNode, leftChild));
+            TreeNode node = queue.poll();
+            i++;
+            if (data.get(i) != -1) {
+                TreeNode left = new TreeNode(data.get(i));
+                queue.add(left);
+                node.left = left;
             }
-            if(data.get(rightChild) != -1){
-                TreeNode rightChildNode = new TreeNode(data.get(rightChild));
-                temp.right = rightChildNode;
-                queue.offer(new Pair(rightChildNode, rightChild));
+            i++;
+            if (data.get(i) != -1) {
+                TreeNode right = new TreeNode(data.get(i));
+                queue.add(right);
+                node.right = right;
             }
-
         }
+
         return root;
+
     }
 }
