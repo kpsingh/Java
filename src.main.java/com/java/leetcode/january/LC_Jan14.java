@@ -1,0 +1,43 @@
+package com.java.leetcode.january;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+/*
+https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/
+2657. Find the Prefix Common Array of Two Arrays
+ */
+public class LC_Jan14 {
+
+    public static void main(String[] args) {
+        int[] arr1 = {2,3,1}; // {1, 3, 2, 4}
+        int[] arr2 = {3, 1, 2}; // {3, 1, 2, 4}
+        int[] result = findThePrefixCommonArray(arr1, arr2);
+        System.out.println(Arrays.toString(result));
+    }
+
+    public static int[] findThePrefixCommonArray(int[] A, int[] B) {
+        int n = A.length;
+        int[] result = new int[n];
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            set1.add(A[i]);
+            set2.add(B[i]);
+            int count = checkCommon(set1, set2);
+            result[i] = count;
+        }
+        return result;
+    }
+
+    private static int checkCommon(Set<Integer> set1, Set<Integer> set2) {
+        int count = 0;
+        for (int a : set2) {
+            if (set1.contains(a)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
