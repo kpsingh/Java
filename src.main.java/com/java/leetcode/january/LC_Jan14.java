@@ -11,7 +11,7 @@ https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/
 public class LC_Jan14 {
 
     public static void main(String[] args) {
-        int[] arr1 = {2,3,1}; // {1, 3, 2, 4}
+        int[] arr1 = {2, 3, 1}; // {1, 3, 2, 4}
         int[] arr2 = {3, 1, 2}; // {3, 1, 2, 4}
         int[] result = findThePrefixCommonArray(arr1, arr2);
         System.out.println(Arrays.toString(result));
@@ -39,5 +39,34 @@ public class LC_Jan14 {
             }
         }
         return count;
+    }
+
+
+    public int[] findThePrefixCommonArray_Optimized(int[] A, int[] B) {
+        int n = A.length;
+        int[] result = new int[n]; // Array to store the prefix common counts
+        int[] freq = new int[51]; // Frequency array for numbers from 1 to 50
+        int commonCount = 0; // Tracks how many numbers are common so far
+
+        for (int i = 0; i < n; i++) {
+            // Process the current element of A
+            freq[A[i]]++;
+            if (freq[A[i]] == 2) {
+                // A[i] becomes common between A and B
+                commonCount++;
+            }
+
+            // Process the current element of B
+            freq[B[i]]++;
+            if (freq[B[i]] == 2) {
+                // B[i] becomes common between A and B
+                commonCount++;
+            }
+
+            // Store the current prefix common count
+            result[i] = commonCount;
+        }
+
+        return result;
     }
 }
