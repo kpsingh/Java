@@ -31,7 +31,9 @@ public class LC_Jan18 {
 
         // Visited array
         int[][] visited = new int[n][m];
-        for (int[] row : visited) Arrays.fill(row, Integer.MAX_VALUE);
+        for (int[] row : visited){
+            Arrays.fill(row, Integer.MAX_VALUE);
+        }
 
         visited[0][0] = 0;
 
@@ -39,7 +41,8 @@ public class LC_Jan18 {
             Pair pair = deque.pollFirst();
             int x = pair.x, y = pair.y, cost = pair.cost;
 
-            if (x == n - 1 && y == m - 1) return cost;
+            if (x == n - 1 && y == m - 1)
+                return cost;
 
             for (int d = 0; d < 4; d++) {
                 int nx = x + dirs[d][0];
