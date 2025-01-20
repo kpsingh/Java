@@ -28,6 +28,7 @@ public class DistanceBetweenNodesOfBST {
                 root = root.left;
             }
         }
+        return distance;
     }
 
     private TreeNode findLCA(TreeNode root, int B, int C) {
