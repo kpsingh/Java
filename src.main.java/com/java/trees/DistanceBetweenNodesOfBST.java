@@ -20,21 +20,21 @@ public class DistanceBetweenNodesOfBST {
         while (root != null) {
             if (root.val == b)
                 return distance;
-
-            distance++;
             if (root.val < b) {
                 root = root.right;
             } else {
                 root = root.left;
             }
+            distance++;
         }
         return distance;
     }
 
     private TreeNode findLCA(TreeNode root, int B, int C) {
         if (root == null) return null;
-        if (root.val > B && root.val > C) return findLCA(root.left, B, C);
-        else if (root.val < B && root.val > C) {
+        if (root.val > B && root.val > C) {
+            return findLCA(root.left, B, C);
+        } else if (root.val < B && root.val > C) {
             return findLCA(root.right, B, C);
         } else {
             return root;
