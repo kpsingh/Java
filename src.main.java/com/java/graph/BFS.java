@@ -16,7 +16,7 @@ public class BFS {
     }
 
     /*
-     from the given source, find if destination can traversed.
+     from the given source, find if destination can traverse.
      */
     public static boolean bfs(Map<Integer, ArrayList<Integer>> graph, int source, int destination) {
         boolean[] visited = new boolean[graph.size() + 1];
@@ -37,7 +37,7 @@ public class BFS {
     }
 
     /*
-    there is nodes between 1 - n
+        there is nodes between 1 - n
      */
 
     private static Map<Integer, ArrayList<Integer>> constructGraph(int[][] edges) {
