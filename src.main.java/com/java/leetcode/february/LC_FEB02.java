@@ -7,7 +7,7 @@ https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/description/
 1752. Check if Array Is Sorted and Rotated
 
 
-we can count the number of inversions (where arr[i] > arr[i+1]).
+We count the number of inversions (where arr[i] > arr[i+1]).
 
     If the array is sorted, there should be 0 inversions.
     If the array is a rotated sorted array, there should be exactly 1 inversion.
