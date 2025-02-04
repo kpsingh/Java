@@ -4,9 +4,10 @@ import java.util.*;
 
 public class BFS {
     public static void main(String[] args) {
-        int[][] edges = {{1, 2}, {1, 4}, {2, 4}, {2, 3}, {3, 5}, {5, 6}, {4, 5}};
+        // int[][] edges = {{1, 2}, {1, 4}, {2, 4}, {2, 3}, {3, 5}, {5, 6}, {4, 5}};
+        int[][] edges = {{1, 2}};
         int source = 1;
-        int target = 6;
+        int target = 2;
 
         // construct the graph
         Map<Integer, ArrayList<Integer>> graph = constructGraph(edges);
@@ -25,13 +26,18 @@ public class BFS {
         visited[source] = true;
         while (!queue.isEmpty()) {
             int current = queue.poll();
-            // System.out.print(current + " ");
-            for (int neighbor : graph.get(current)) {
-                if (!visited[neighbor]) {
-                    visited[neighbor] = true;
-                    queue.add(neighbor);
+            /*
+            If a node has no outgoing edges, graph.get(curr) may return null, causing a NullPointerException.
+             */
+            if (graph.containsKey(current)) { // Avoid NullPointerException
+                for (int neighbor : graph.get(current)) {
+                    if (!visited[neighbor]) {
+                        visited[neighbor] = true;
+                        queue.add(neighbor);
+                    }
                 }
             }
+
         }
         return visited[destination];
     }
