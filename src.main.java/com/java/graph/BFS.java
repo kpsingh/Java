@@ -45,8 +45,8 @@ public class BFS {
         for (int[] edge : edges) {
             graph.putIfAbsent(edge[0], new ArrayList<>());
             graph.putIfAbsent(edge[1], new ArrayList<>());
-            graph.get(edge[0]).add(edge[1]);
-            graph.get(edge[1]).add(edge[0]);
+            graph.get(edge[0]).add(edge[1]); // if directed then only this
+            graph.get(edge[1]).add(edge[0]); // if undirected then add this as well
         }
         return graph;
     }
