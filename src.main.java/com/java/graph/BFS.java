@@ -37,7 +37,6 @@ public class BFS {
                     }
                 }
             }
-
         }
         return visited[destination];
     }
