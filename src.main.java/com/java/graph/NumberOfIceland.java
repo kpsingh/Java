@@ -56,13 +56,3 @@ public class NumberOfIceland {
         return i >= 0 && j >= 0 && i < arr.length && j < arr[0].length && arr[i][j] == 1 && !visited[i][j];
     }
 }
-
-class Pair {
-    int i;
-    int j;
-
-    Pair(int i, int j) {
-        this.i = i;
-
-    }
-}
