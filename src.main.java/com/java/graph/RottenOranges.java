@@ -28,24 +28,38 @@ public class RottenOranges {
             }
         }
 
+        int time = 0;
         while (!q.isEmpty()) {
-            Pair p = q.poll();
-            int i = p.i;
-            int j = p.j;
-            // explore all the 4 option and see which can be valid case to put into the queue
-            for (int k = 0; k < 4; k++) {
-                int ni = i + dx[k];
-                int nj = j + dy[k];
-                if (validCell(arr, ni, nj)) { // check if it is fresh orange
-                    arr[ni][nj] = 2; // make the orange as rotten
-                    q.offer(new Pair(ni, nj)); // add to the que so that adjucent to it can be rotten in next minutes
+            int size = q.size();
+            time++;
+            for (int s = 0; s < size; s++) {
+                Pair p = q.poll();
+                int i = p.i;
+                int j = p.j;
+                // explore all the 4 option and see which can be valid case to put into the queue
+                for (int k = 0; k < 4; k++) {
+                    int ni = i + dx[k];
+                    int nj = j + dy[k];
+                    if (validCell(arr, ni, nj)) { // check if it is fresh orange
+                        arr[ni][nj] = 2; // make the orange as rotten
+                        q.offer(new Pair(ni, nj)); // add to the que so that adjucent to it can be rotten in next minutes
+                    }
                 }
             }
         }
 
-        return  -1;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                if (arr[i][j] == 1) { // if any fresh orange found then return -1
+                    return -1;
+                }
+            }
+        }
+
+        return time;
     }
+
     private static boolean validCell(int[][] arr, int i, int j) {
-        return i >=0 && j >= 0 && i<arr.length && j<arr[0].length && arr[i][j] == 1; // if fresh orange
+        return i >= 0 && j >= 0 && i < arr.length && j < arr[0].length && arr[i][j] == 1; // if fresh orange
     }
 }
