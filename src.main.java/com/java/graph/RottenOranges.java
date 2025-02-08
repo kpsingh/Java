@@ -19,44 +19,40 @@ public class RottenOranges {
     public static int bfs(int[][] arr) {
         int n = arr.length;
         int m = arr[0].length;
-        Queue<Pair> q = new LinkedList<>();
+        int freshCount = 0;
+        Queue<Pair> queue = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (arr[i][j] == 2) {
-                    q.add(new Pair(i, j)); // collect all rotten oranges (multi source bfs)
+                if (arr[i][j] == 1) {
+                    freshCount++; // count the fresh orange
+                } else if (arr[i][j] == 2) {
+                    queue.add(new Pair(i, j)); // rotten orange can be one of source for bfs
                 }
             }
         }
-
-        int time = 0;
-        while (!q.isEmpty()) {
-            int size = q.size();
+        if (freshCount == 0) {
+            return 0; // that mean all oranges are already rotten
+        }
+        int time = -1;
+        while (!queue.isEmpty()) {
             time++;
-            for (int s = 0; s < size; s++) {
-                Pair p = q.poll();
-                int i = p.i;
-                int j = p.j;
-                // explore all the 4 option and see which can be valid case to put into the queue
-                for (int k = 0; k < 4; k++) {
+            int size = queue.size();
+            for (int s = 0; s < size; s++) { // all orange in this level get rotten in same time
+                Pair pair = queue.poll();
+                int i = pair.i, j = pair.j;
+
+                for (int k = 0; k < dx.length; k++) { // explore all 4 option from the current node
                     int ni = i + dx[k];
                     int nj = j + dy[k];
-                    if (validCell(arr, ni, nj)) { // check if it is fresh orange
-                        arr[ni][nj] = 2; // make the orange as rotten
-                        q.offer(new Pair(ni, nj)); // add to the que so that adjucent to it can be rotten in next minutes
+                    if (validCell(arr, ni, nj)) {
+                        arr[ni][nj] = 2; // this orange got rotten
+                        freshCount--; // reduce one fresh orange
+                        queue.add(new Pair(ni, nj)); // put into the que
                     }
                 }
             }
         }
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] == 1) { // if any fresh orange found then return -1
-                    return -1;
-                }
-            }
-        }
-
-        return time;
+        return freshCount == 0 ? time : -1; // if any fresh count then return -1;
     }
 
     private static boolean validCell(int[][] arr, int i, int j) {
