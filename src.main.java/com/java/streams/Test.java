@@ -32,6 +32,8 @@ public class Test {
 		
 		list.stream().map(i -> String.valueOf(i)).filter(s -> s.startsWith("2")).
 		map(Integer::parseInt).collect(Collectors.toList());
+		System.out.println("****8");
+		list.stream().sorted().skip(2).limit(3).forEach(System.out::println);
 		
 		
 		

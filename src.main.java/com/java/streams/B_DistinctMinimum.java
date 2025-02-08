@@ -14,7 +14,7 @@ public class B_DistinctMinimum {
 		int[] arr = { 4, 7, 0, 13, 90, 16, 2, 10, 0 };
 
 		/*
-		 * find he 3 distinct minimum from the arrays.
+		 * find the 3 distinct minimum from the arrays.
 		 * 
 		 */
 
