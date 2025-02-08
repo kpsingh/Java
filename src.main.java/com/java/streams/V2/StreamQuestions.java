@@ -32,10 +32,21 @@ public class StreamQuestions {
         List<Integer> listOfPrimeNum = numbers.stream().filter(StreamQuestions::isPrime).collect(Collectors.toList());
         System.out.println(listOfPrimeNum);
 
+        // Merge two sorted lists into a single sorted list using Java streams:
+        List<Integer> list1 = Arrays.asList(1, 3, 5, 7, 9);
+        List<Integer> list2 = Arrays.asList(2, 4, 6, 8, 10);
+
+        List<Integer> sortedList = Stream.concat(list1.stream(), list2.stream()).sorted().collect(Collectors.toList());
+        System.out.println(sortedList);
+
+        // Find the intersection of two lists using Java streams:
+
+
+
 
     }
 
-    public static boolean isPrime(int n) {
+    public static  boolean isPrime(int n) {
         if (n < 2) return false; // not a prime
         for (int i = 2; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
