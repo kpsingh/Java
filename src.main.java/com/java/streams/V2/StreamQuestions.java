@@ -3,6 +3,7 @@ package com.java.streams.V2;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamQuestions {
@@ -23,8 +24,24 @@ public class StreamQuestions {
         persons.stream().mapToInt(Person::getAge).average().orElse(0);
         persons.stream().mapToInt(Person::getAge).average().ifPresent(System.out::println);
 
+        //Check if a list of integers contains a prime number using Java streams:
+        boolean hasPrime = Arrays.asList(5, 6, 7, 8, 9).stream().anyMatch(StreamQuestions::isPrime);
+        System.out.println("hasPrime: " + hasPrime);
+        // Finding All Prime Numbers
+        List<Integer> numbers = Arrays.asList(10, 15, 22, 33, 37,5,7, 40);
+        List<Integer> listOfPrimeNum = numbers.stream().filter(StreamQuestions::isPrime).collect(Collectors.toList());
+        System.out.println(listOfPrimeNum);
 
 
+    }
 
+    public static boolean isPrime(int n) {
+        if (n < 2) return false; // not a prime
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
