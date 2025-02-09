@@ -83,6 +83,13 @@ public class StreamQuestions {
         Map<String, Long> wordsCount = words.stream().collect(Collectors.groupingBy(word -> word, Collectors.counting()));
         System.out.println(wordsCount);
 
+        // Implement a method to partition a list into two groups based on a predicate using Java streams:
+        List<Integer> list = Arrays.asList(10, 25, 30, 45, 60, 75, 80);
+        Map<Boolean, List<Integer>> partitioned = list.stream().collect(Collectors.partitioningBy(a -> a % 2 == 0));
+        System.out.println(partitioned.get(true));
+        System.out.println(partitioned.get(false));
+
+
     }
 
     public static boolean isPrime(int n) {
