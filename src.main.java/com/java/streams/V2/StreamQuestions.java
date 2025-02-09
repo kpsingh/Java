@@ -1,6 +1,8 @@
 package com.java.streams.V2;
 
 import java.util.*;
+import java.util.function.DoubleToIntFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -73,6 +75,13 @@ public class StreamQuestions {
         int kthSmallest = IntStream.of(array).sorted().skip(4).findFirst().orElse(-1);
         System.out.println(kthSmallest);
 
+        // Given a list of strings, find the frequency of each word using Java streams:
+        List<String> words = Arrays.asList("apple", "banana", "apple", "cherry",
+                "banana", "apple");
+        words.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        // or
+        Map<String, Long> wordsCount = words.stream().collect(Collectors.groupingBy(word -> word, Collectors.counting()));
+        System.out.println(wordsCount);
 
     }
 
