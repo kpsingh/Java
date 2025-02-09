@@ -1,10 +1,8 @@
 package com.java.streams.V2;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamQuestions {
@@ -62,10 +60,18 @@ public class StreamQuestions {
 
         Map<String, Integer> sumByDate = transactions.stream().collect(Collectors.groupingBy(Transaction::getDate, Collectors.summingInt(Transaction::getAmount)));
         System.out.println(sumByDate);
-
+        // add the total transaction
         Integer totalAmount = transactions.stream().collect(Collectors.summingInt(Transaction::getAmount));
         System.out.println(totalAmount);
 
+        int sum = transactions.stream().mapToInt(Transaction::getAmount).sum();
+        System.out.println(sum);
+
+        // Find the kth smallest element in an array using Java streams:
+        int[] array = {4, 2, 7, 1, 5, 3, 6};
+        // skipp k-1
+        int kthSmallest = IntStream.of(array).sorted().skip(4).findFirst().orElse(-1);
+        System.out.println(kthSmallest);
 
 
     }
