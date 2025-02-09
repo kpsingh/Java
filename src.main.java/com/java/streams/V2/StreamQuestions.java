@@ -40,7 +40,15 @@ public class StreamQuestions {
         System.out.println(sortedList);
 
         // Find the intersection of two lists using Java streams:
+        list1 = Arrays.asList(1, 3, 5, 7, 9);
+        list2 = Arrays.asList(2, 4, 5, 9);
+        List<Integer> intersection = list1.stream().filter(list2::contains).collect(Collectors.toList());
+        System.out.println(intersection);
 
+        // Remove duplicates from a list while preserving the order using Java streams:
+        List<Integer> numbersWithDuplicates = Arrays.asList(1, 2, 3, 2, 4, 1, 5, 6, 5);
+        numbersWithDuplicates = numbersWithDuplicates.stream().distinct().collect(Collectors.toList());
+        System.out.println(numbersWithDuplicates);
 
 
 
