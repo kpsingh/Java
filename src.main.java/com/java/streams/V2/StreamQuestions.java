@@ -3,6 +3,7 @@ package com.java.streams.V2;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,7 +29,7 @@ public class StreamQuestions {
         boolean hasPrime = Arrays.asList(5, 6, 7, 8, 9).stream().anyMatch(StreamQuestions::isPrime);
         System.out.println("hasPrime: " + hasPrime);
         // Finding All Prime Numbers
-        List<Integer> numbers = Arrays.asList(10, 15, 22, 33, 37,5,7, 40);
+        List<Integer> numbers = Arrays.asList(10, 15, 22, 33, 37, 5, 7, 40);
         List<Integer> listOfPrimeNum = numbers.stream().filter(StreamQuestions::isPrime).collect(Collectors.toList());
         System.out.println(listOfPrimeNum);
 
@@ -50,11 +51,26 @@ public class StreamQuestions {
         numbersWithDuplicates = numbersWithDuplicates.stream().distinct().collect(Collectors.toList());
         System.out.println(numbersWithDuplicates);
 
+        // Given a list of transactions, find the sum of transaction amounts for each day using Java streams:
+        List<Transaction> transactions = Arrays.asList(
+                new Transaction("2022-01-01", 100),
+                new Transaction("2022-01-01", 200),
+                new Transaction("2022-01-02", 300),
+                new Transaction("2022-01-02", 400),
+                new Transaction("2022-01-03", 500)
+        );
+
+        Map<String, Integer> sumByDate = transactions.stream().collect(Collectors.groupingBy(Transaction::getDate, Collectors.summingInt(Transaction::getAmount)));
+        System.out.println(sumByDate);
+
+        Integer totalAmount = transactions.stream().collect(Collectors.summingInt(Transaction::getAmount));
+        System.out.println(totalAmount);
+
 
 
     }
 
-    public static  boolean isPrime(int n) {
+    public static boolean isPrime(int n) {
         if (n < 2) return false; // not a prime
         for (int i = 2; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
