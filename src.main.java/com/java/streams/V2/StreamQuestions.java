@@ -89,6 +89,24 @@ public class StreamQuestions {
         System.out.println(partitioned.get(true)); // even list
         System.out.println(partitioned.get(false)); // odd list
 
+        // Given a list of integers, find out all the numbers starting with 1 using Stream functions?
+        List<Integer> intList = Arrays.asList(10,5,514,19,114,217,152);
+        intList.stream().map(String::valueOf).filter(s -> s.startsWith("1")).forEach(System.out::println);
+
+        // find duplicate elements in a given integers list in java using Stream functions?
+        List<Integer> myList = Arrays.asList(10,15,8,49,25,98,98,32,15);
+        // Find duplicate elements
+        Set<Integer> duplicates = myList.stream()
+                .collect(Collectors.groupingBy(n -> n, Collectors.counting())) // Count occurrences
+                .entrySet().stream() // Convert to Stream
+                .filter(entry -> entry.getValue() > 1) // Keep only duplicates
+                .map(Map.Entry::getKey) // Extract duplicate elements
+                .collect(Collectors.toSet()); // Collect to Set to avoid duplicates
+
+
+
+
+
 
     }
 
