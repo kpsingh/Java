@@ -1,13 +1,12 @@
 package com.java.streams.V2;
 
 import java.util.*;
-import java.util.function.DoubleToIntFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class StreamQuestions {
+public class StreamFAQ_V1 {
     public static void main(String[] args) {
         ///Q. Find the longest string in a list of strings using Java streams:
         List<String> names = Arrays.asList("KP", "Modi", "Ramayan", "Mahabharat");
@@ -26,11 +25,11 @@ public class StreamQuestions {
         persons.stream().mapToInt(Person::getAge).average().ifPresent(System.out::println);
 
         //Check if a list of integers contains a prime number using Java streams:
-        boolean hasPrime = Arrays.asList(5, 6, 7, 8, 9).stream().anyMatch(StreamQuestions::isPrime);
+        boolean hasPrime = Arrays.asList(5, 6, 7, 8, 9).stream().anyMatch(StreamFAQ_V1::isPrime);
         System.out.println("hasPrime: " + hasPrime);
         // Finding All Prime Numbers
         List<Integer> numbers = Arrays.asList(10, 15, 22, 33, 37, 5, 7, 40);
-        List<Integer> listOfPrimeNum = numbers.stream().filter(StreamQuestions::isPrime).collect(Collectors.toList());
+        List<Integer> listOfPrimeNum = numbers.stream().filter(StreamFAQ_V1::isPrime).collect(Collectors.toList());
         System.out.println(listOfPrimeNum);
 
         // Merge two sorted lists into a single sorted list using Java streams:
@@ -102,11 +101,6 @@ public class StreamQuestions {
                 .filter(entry -> entry.getValue() > 1) // Keep only duplicates
                 .map(Map.Entry::getKey) // Extract duplicate elements
                 .collect(Collectors.toSet()); // Collect to Set to avoid duplicates
-
-
-
-
-
 
     }
 
