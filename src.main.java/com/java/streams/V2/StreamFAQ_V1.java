@@ -1,5 +1,6 @@
 package com.java.streams.V2;
 
+import javax.print.DocFlavor;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -101,6 +102,16 @@ public class StreamFAQ_V1 {
                 .filter(entry -> entry.getValue() > 1) // Keep only duplicates
                 .map(Map.Entry::getKey) // Extract duplicate elements
                 .collect(Collectors.toSet()); // Collect to Set to avoid duplicates
+
+
+
+        // Write a program to print the count of each character in a String?
+        String s = "string data to count each character";
+        Map<String, Long> collect = Stream.of(s.trim().split(""))
+                .filter(s1 -> !s1.isBlank())
+                .map(String::toLowerCase)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(collect);
 
     }
 
