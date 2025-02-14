@@ -103,8 +103,6 @@ public class StreamFAQ_V1 {
                 .map(Map.Entry::getKey) // Extract duplicate elements
                 .collect(Collectors.toSet()); // Collect to Set to avoid duplicates
 
-
-
         // Write a program to print the count of each character in a String?
         String s = "string data to count each character";
         Map<String, Long> collect = Stream.of(s.trim().split(""))
