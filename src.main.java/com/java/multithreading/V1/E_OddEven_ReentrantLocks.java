@@ -5,101 +5,101 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class E_OddEven_ReentrantLocks {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Print p = new Print();
+        Print p = new Print();
 
-		Thread t1 = new Thread(() -> p.odd());
+        Thread t1 = new Thread(() -> p.odd());
 
-		Thread t2 = new Thread(() -> p.even());
+        Thread t2 = new Thread(() -> p.even());
 
-		t1.start();
-		t2.start();
-		
+        t1.start();
+        t2.start();
 
-	}
+
+    }
 
 }
 
 class Print {
 
-	private volatile int number = 1;
-	ReentrantLock lock = new ReentrantLock();
-	Condition even = lock.newCondition();
-	Condition odd = lock.newCondition();
+    private volatile int number = 1;
+    ReentrantLock lock = new ReentrantLock();
+    Condition even = lock.newCondition();
+    Condition odd = lock.newCondition();
 
-	public void even() {
+    public void even() {
 
-		try {
+        try {
 
-			lock.lock();
+            lock.lock();
 
-			while (number < 10) {
+            while (number < 10) {
 
-				if (number % 2 != 0) {
+                if (number % 2 != 0) {
 
-					/*
-					 * if number is ODD then wait for signal when it becomes even
-					 */
-					even.await();
-				}
+                    /*
+                     * if number is ODD then wait for signal when it becomes even
+                     */
+                    even.await();
+                }
 
-				/*
-				 * if number is even then print and make it odd by incrementing and signal that
-				 * is is odd now
-				 * 
-				 */
+                /*
+                 * if number is even then print and make it odd by incrementing and signal that
+                 * is is odd now
+                 *
+                 */
 
-				System.out.println(Thread.currentThread().getName() + " : " + number++);
+                System.out.println(Thread.currentThread().getName() + " : " + number++);
 
-				odd.signalAll();
+                odd.signalAll();
 
-			}
-		} catch (InterruptedException e) {
+            }
+        } catch (InterruptedException e) {
 
-			e.getMessage();
+            e.getMessage();
 
-		} finally {
+        } finally {
 
-			lock.unlock();
-		}
+            lock.unlock();
+        }
 
-	}
+    }
 
-	public void odd() {
+    public void odd() {
 
-		try {
+        try {
 
-			lock.lock();
+            lock.lock();
 
-			while (number < 10) {
+            while (number < 10) {
 
-				if (number % 2 == 0) {
+                if (number % 2 == 0) {
 
-					/*
-					 * if number is EVEN then wait for signal when it becomes ODD
-					 */
-					odd.await();
+                    /*
+                     * if number is EVEN then wait for signal when it becomes ODD
+                     */
+                    odd.await();
 
-				}
-				/*
-				 * if number is ODD then print and make it even by incrementing and signal that
-				 * is is even now
-				 */
+                }
+                /*
+                 * if number is ODD then print and make it even by incrementing and signal that
+                 * is is even now
+                 */
 
-				System.out.println(Thread.currentThread().getName() + " : " + number++);
+                System.out.println(Thread.currentThread().getName() + " : " + number++);
 
-				even.signalAll();
+                even.signalAll();
 
-			}
-		} catch (InterruptedException e) {
+            }
+        } catch (InterruptedException e) {
 
-			e.getMessage();
+            e.getMessage();
 
-		} finally {
+        } finally {
 
-			lock.unlock();
-		}
+            lock.unlock();
+        }
 
-	}
+    }
 }
