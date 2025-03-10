@@ -23,6 +23,8 @@ public class ContainerWithMostWater {
         while (left < right) {
             int area = Math.min(height[left], height[right]) * (right - left);
             ans = Math.max(ans, area);
+
+            // this is important to decide which pointer needs to be moved
             if (height[left] < height[right]) {
                 left++;
             } else {
