@@ -4,7 +4,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class PrintOddEven {
-
     public static void main(String[] args) {
         Print print = new Print(1, 10);
         Thread t1 = new Thread(print::printEven);
