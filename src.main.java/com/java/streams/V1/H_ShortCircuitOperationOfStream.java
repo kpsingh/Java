@@ -1,9 +1,7 @@
-package com.java.streams;
+package com.java.streams.V1;
 
 import java.util.Arrays;
 import java.util.List;
-
-import javax.sound.midi.Soundbank;
 
 /**
  * 

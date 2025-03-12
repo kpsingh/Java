@@ -1,4 +1,4 @@
-package com.java.streams;
+package com.java.streams.V1;
 
 public class Test2 extends B implements A {
 
