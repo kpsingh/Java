@@ -4,19 +4,19 @@ public class Test{
 
     static{
 
-        System.out.println("Hello Staic");
+        System.out.println("Hello Staic"); // 1
 
     }
 
     Test(){
 
-        System.out.println("Hello constructor");
+        System.out.println("Hello constructor"); // 3
 
     }
 
     {
 
-        System.out.println("Hello block");
+        System.out.println("Hello block"); // 2
 
     }
 
