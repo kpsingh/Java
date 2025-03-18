@@ -14,6 +14,11 @@ public class CounterExample implements Runnable {
         }
     }
 
+    @Override
+    public void run() {
+        incrementCounter();
+    }
+
     public static void main(String[] args) {
 
         ExecutorService service = Executors.newFixedThreadPool(10);
@@ -31,8 +36,4 @@ public class CounterExample implements Runnable {
         System.out.println("Final Counter Value: " + counter.get());
     }
 
-    @Override
-    public void run() {
-        incrementCounter();
-    }
 }
