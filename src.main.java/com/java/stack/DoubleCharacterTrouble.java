@@ -14,19 +14,18 @@ The final result will be the transformed string.
  */
 public class DoubleCharacterTrouble {
     public static void main(String[] args) {
-        String s = "abba";
+        String s = "abccbc";
         s = transform(s);
         System.out.println(s);
     }
 
     private static String transform(String s) {
         Deque<Character> stack = new ArrayDeque<>();
-        stack.push(s.charAt(0));
-        for (int i = 1; i < s.length(); i++) {
-            if (!stack.isEmpty() && stack.peek() == s.charAt(i)) {
+        for (Character ch : s.toCharArray()) {
+            if (!stack.isEmpty() && stack.peek() == ch) {
                 stack.pop();
             } else {
-                stack.push(s.charAt(i));
+                stack.push(ch);
             }
         }
         StringBuilder sb = new StringBuilder();
