@@ -29,13 +29,13 @@ public class EvaluateExpression {
     }
 
     private static int doOperation(String token, int op1, int op2) {
-        switch (token) {
-            case "+" : return op1 + op2;
-            case "-" : return op1 - op2;
-            case "*" : return op1 * op2;
-            case "/" : return op1 / op2;
-            default : throw new IllegalArgumentException("Not valid operator");
-        }
+        return switch (token) {
+            case "+" -> op1 + op2;
+            case "-" -> op1 - op2;
+            case "*" -> op1 * op2;
+            case "/" -> op1 / op2;
+            default -> throw new IllegalArgumentException("Not valid operator");
+        };
     }
 
     private static boolean isOperator(String token) {
