@@ -6,6 +6,8 @@ public class VerticalOrderOfBinaryTree {
     public static void main(String[] args) {
         TreeNode root = TestUtil.getRoot();
         List<List<Integer>> lists = verticalOrder(root);
+
+        //System.out.println(lists.toString());
         for (List<Integer> list : lists) {
             System.out.println(list);
         }

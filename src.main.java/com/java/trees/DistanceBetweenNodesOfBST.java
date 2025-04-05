@@ -1,7 +1,5 @@
 package com.java.trees;
 
-import com.sun.source.tree.Tree;
-
 public class DistanceBetweenNodesOfBST {
 
     public int distanceBetweenNodes(TreeNode root, int B, int C) {
