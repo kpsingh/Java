@@ -53,7 +53,6 @@ public class TopKFrequentWorld {
 
         return list.stream()
                 .map(Map.Entry::getKey)
-                //.sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
     }
 }
