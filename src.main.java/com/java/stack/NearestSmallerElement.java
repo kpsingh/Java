@@ -30,6 +30,9 @@ public class NearestSmallerElement {
             stack.push(a);
         }
 
+        String join = String.join(" ", "Krishna", "Pratap", "Singh");
+        System.out.println(join);
+
         return result;
     }
 }

@@ -21,8 +21,6 @@ public class PartitionEqualSubsetSum {
             return result; //  sum is add then we can't divide in two parts
         }
 
-
-
         return result;
     }
 }
