@@ -9,7 +9,7 @@ Find the pair of all elements whose sum is = target,
 duplicates pairs are not allowed
 
  */
-public class TwoSum {
+public class Two2Sum {
     public static void main(String[] args) {
         int[] arr = {-1, 7, 0, 1, 2, 2, 5};
         int target = 1;
@@ -26,7 +26,6 @@ public class TwoSum {
         List<Pair> ans = new ArrayList<>();
         while (left < right) {
             int sum = arr[left] + arr[right];
-
             if (sum == target) {
                 ans.add(new Pair(arr[left], arr[right]));
                 int leftVal = arr[left];
